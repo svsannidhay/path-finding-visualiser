@@ -1,21 +1,22 @@
 .board {
   [class^="board__row--"] {
-    height: 2.5rem;
+    height: $board-width/50;
   }
   padding: 10rem 0;
-  width:125rem;
+  width: $board-width;
   margin: 0 auto;
   &__node {
     display: inline-block;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: $board-width/50;
+    height: $board-width/50;
 
     &--content {
-      width: 2.4rem;
-      height: 2.4rem;
+      width: $board-width/52;
+      height: $board-width/52;
     }
+
     &--gradient-border {
       --borderWidth: 1px;
       background: #ffffff;
@@ -30,10 +31,10 @@
       left: calc(-1 * var(--borderWidth));
       height: calc(100% + var(--borderWidth) * 2);
       width: calc(100% + var(--borderWidth) * 2);
-      background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+      background: linear-gradient(60deg, $color-primary-light,$color-primary-dark);
       border-radius: calc(2 * var(--borderWidth));
       z-index: -1;
-      animation: animatedgradient 3s ease alternate infinite;
+      // animation: animatedgradient 3s ease alternate infinite;
       background-size: 300% 300%;
     }
   }

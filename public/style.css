@@ -75,19 +75,19 @@ body {
 
 .board {
   padding: 10rem 0;
-  width: 125rem;
+  width: 140rem;
   margin: 0 auto; }
   .board [class^="board__row--"] {
-    height: 2.5rem; }
+    height: 2.8rem; }
   .board__node {
     display: inline-block;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem; }
+    width: 2.8rem;
+    height: 2.8rem; }
     .board__node--content {
-      width: 2.4rem;
-      height: 2.4rem; }
+      width: 2.69231rem;
+      height: 2.69231rem; }
     .board__node--gradient-border {
       --borderWidth: 1px;
       background: #ffffff;
@@ -100,8 +100,7 @@ body {
       left: calc(-1 * var(--borderWidth));
       height: calc(100% + var(--borderWidth) * 2);
       width: calc(100% + var(--borderWidth) * 2);
-      background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+      background: linear-gradient(60deg, #7ed56f, #28b485);
       border-radius: calc(2 * var(--borderWidth));
       z-index: -1;
-      animation: animatedgradient 3s ease alternate infinite;
       background-size: 300% 300%; }

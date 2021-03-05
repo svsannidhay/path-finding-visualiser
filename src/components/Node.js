@@ -11,7 +11,7 @@ class Node extends React.Component {
   
   render () {
     return (
-      <div className="board__node">
+      <div onClick = {() => this.props.onNodeSelect(this.props.row,this.props.col) } className="board__node">
         <div className = {`board__node--content ${this.state.rowIndex}+${this.state.colIndex} board__node--gradient-border`}></div>
       </div>
     );
