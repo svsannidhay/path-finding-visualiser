@@ -86,21 +86,13 @@ body {
     width: 2.8rem;
     height: 2.8rem; }
     .board__node--content {
-      width: 2.69231rem;
-      height: 2.69231rem; }
-    .board__node--gradient-border {
-      --borderWidth: 1px;
-      background: #ffffff;
-      position: relative;
-      border-radius: var(--borderWidth); }
-    .board__node--gradient-border:after {
-      content: '';
-      position: absolute;
-      top: calc(-1 * var(--borderWidth));
-      left: calc(-1 * var(--borderWidth));
-      height: calc(100% + var(--borderWidth) * 2);
-      width: calc(100% + var(--borderWidth) * 2);
-      background: linear-gradient(60deg, #7ed56f, #28b485);
-      border-radius: calc(2 * var(--borderWidth));
-      z-index: -1;
-      background-size: 300% 300%; }
+      width: 2.8rem;
+      height: 2.8rem;
+      border: 1px solid #7ed56f;
+      transition: all .4s; }
+  .board__startNode {
+    background-color: #ffb900; }
+  .board__destNode {
+    background-color: #ff7730; }
+  .board__wallNode {
+    background-color: #28b485; }

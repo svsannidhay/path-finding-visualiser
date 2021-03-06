@@ -13,30 +13,20 @@
     height: $board-width/50;
 
     &--content {
-      width: $board-width/52;
-      height: $board-width/52;
+      width: $board-width/50;
+      height: $board-width/50;
+      border: 1px solid $color-primary-light;
+      transition: all .4s;
     }
-
-    &--gradient-border {
-      --borderWidth: 1px;
-      background: #ffffff;
-      position: relative;
-      border-radius: var(--borderWidth);
-    }
-
-    &--gradient-border:after {
-      content: '';
-      position: absolute;
-      top: calc(-1 * var(--borderWidth));
-      left: calc(-1 * var(--borderWidth));
-      height: calc(100% + var(--borderWidth) * 2);
-      width: calc(100% + var(--borderWidth) * 2);
-      background: linear-gradient(60deg, $color-primary-light,$color-primary-dark);
-      border-radius: calc(2 * var(--borderWidth));
-      z-index: -1;
-      // animation: animatedgradient 3s ease alternate infinite;
-      background-size: 300% 300%;
-    }
+  }
+  &__startNode {
+    background-color: $color-secondary-light;
+  }
+  &__destNode {
+    background-color: $color-secondary-dark;
+  }
+  &__wallNode {
+    background-color: $color-primary-dark;
   }
 }
 
