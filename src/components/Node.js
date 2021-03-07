@@ -10,6 +10,7 @@ class Node extends React.Component {
         onClick = {() => this.props.onNodeSelect(this.props.row,this.props.col)} 
         onMouseDown = {() => this.props.onButtonDown(this.props.row,this.props.col)}
         onMouseUp = {() => this.props.onButtonUp(this.props.row,this.props.col)}
+        onMouseOver = {() => this.props.onButtonOn(this.props.row,this.props.col)}
         id = {`${this.props.row}+${this.props.col}`} 
         className = {
           `board__node--content 
