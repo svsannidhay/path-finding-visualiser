@@ -66,16 +66,6 @@ class Board extends React.Component {
         destNodeSelected: true
       });
     } 
-    // else {
-    //   // If wall is already there remove it else place it there
-    //   if(newNodes[rowIndex][colIndex]===2) {
-    //     newNodes[rowIndex][colIndex] = 0;
-    //     document.getElementById(`${rowIndex}+${colIndex}`).classList.remove('board__wallNode');
-    //   } else {
-    //     newNodes[rowIndex][colIndex] = 2;
-    //     document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__wallNode');
-    //   }
-    // }
     this.setState({nodes: newNodes});
   }
 
@@ -105,7 +95,17 @@ class Board extends React.Component {
     }
     // start building walls
     else if(this.state.startNodeSelected === true && this.state.destNodeSelected === true) { 
+      const newNodes = this.createBoard();
+// toggle the state of wall or no wall
+      if(this.state.nodes[rowIndex][colIndex] === 0) {
+        newNodes[rowIndex][colIndex] = 2;
+        document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__wallNode');
+      } else if (this.state.nodes[rowIndex][colIndex] === 2){
+        newNodes[rowIndex][colIndex] = 0;
+        document.getElementById(`${rowIndex}+${colIndex}`).classList.remove('board__wallNode');
+      }
       this.setState({
+        nodes: newNodes,
         buildingWalls: true,
       })
     } 
@@ -143,7 +143,7 @@ class Board extends React.Component {
       if(this.state.nodes[rowIndex][colIndex] === 0) {
         newNodes[rowIndex][colIndex] = 2;
         document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__wallNode');
-      } else {
+      } else if (this.state.nodes[rowIndex][colIndex] === 2){
         newNodes[rowIndex][colIndex] = 0;
         document.getElementById(`${rowIndex}+${colIndex}`).classList.remove('board__wallNode');
       }
