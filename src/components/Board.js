@@ -13,6 +13,7 @@ class Board extends React.Component {
       destNodeSelected: false,
       startNodeMoving: false,
       destNodeMoving: false,
+      buildingWalls: false,
       prevRowIndex: -1,
       prevColIndex : -1
     };
@@ -64,10 +65,17 @@ class Board extends React.Component {
       this.setState ({
         destNodeSelected: true
       });
-    } else if (newNodes[rowIndex][colIndex]!==1&&newNodes[rowIndex][colIndex]!==3) {
-      newNodes[rowIndex][colIndex] = 2;
-      document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__wallNode');
-    }
+    } 
+    // else {
+    //   // If wall is already there remove it else place it there
+    //   if(newNodes[rowIndex][colIndex]===2) {
+    //     newNodes[rowIndex][colIndex] = 0;
+    //     document.getElementById(`${rowIndex}+${colIndex}`).classList.remove('board__wallNode');
+    //   } else {
+    //     newNodes[rowIndex][colIndex] = 2;
+    //     document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__wallNode');
+    //   }
+    // }
     this.setState({nodes: newNodes});
   }
 
@@ -85,7 +93,7 @@ class Board extends React.Component {
       });
     } 
     // If its a destination node
-    if(this.state.nodes[rowIndex][colIndex]===3) {
+    else if(this.state.nodes[rowIndex][colIndex]===3) {
       const newNodes = this.createBoard();
       newNodes[rowIndex][colIndex] = 0;
       this.setState({
@@ -95,7 +103,12 @@ class Board extends React.Component {
         nodes: newNodes
       });
     }
-    // If its a wall node
+    // start building walls
+    else if(this.state.startNodeSelected === true && this.state.destNodeSelected === true) { 
+      this.setState({
+        buildingWalls: true,
+      })
+    } 
   }
 
   onButtonOn = async (rowIndex,colIndex) => {
@@ -123,6 +136,21 @@ class Board extends React.Component {
         prevColIndex: colIndex
       });
     }
+    // if we were building walls then built it here
+    if(this.state.buildingWalls === true) {
+      const newNodes = this.createBoard();
+      // toggle the state of wall or no wall
+      if(this.state.nodes[rowIndex][colIndex] === 0) {
+        newNodes[rowIndex][colIndex] = 2;
+        document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__wallNode');
+      } else {
+        newNodes[rowIndex][colIndex] = 0;
+        document.getElementById(`${rowIndex}+${colIndex}`).classList.remove('board__wallNode');
+      }
+      this.setState({
+        nodes: newNodes
+      });
+    }
   }
 
   onButtonUp = (rowIndex,colIndex) => {
@@ -145,6 +173,12 @@ class Board extends React.Component {
       this.setState({
         destNodeMoving: false,
         nodes: newNodes
+      });
+    }
+    // thats enough stop building more walls
+    if(this.state.buildingWalls === true) {
+      this.setState({
+        buildingWalls: false
       });
     }
   } 
