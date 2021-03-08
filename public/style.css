@@ -34,6 +34,12 @@
   100% {
     background-position: 0% 50%; } }
 
+@keyframes animateScale {
+  0% {
+    transform: scale(0.01); }
+  100% {
+    transform: scale(1); } }
+
 *,
 *::after,
 *::before {
@@ -78,21 +84,38 @@ body {
   width: 140rem;
   margin: 0 auto; }
   .board [class^="board__row--"] {
-    height: 2.8rem; }
+    height: 2.8rem;
+    border-bottom: 1px solid #B39CD0; }
+    .board [class^="board__row--"]:first-child {
+      border-top: 1px solid #B39CD0; }
   .board__node {
     display: inline-block;
     align-items: center;
     justify-content: center;
     width: 2.8rem;
-    height: 2.8rem; }
-    .board__node--content {
+    height: 2.8rem;
+    border-right: 1px solid #B39CD0;
+    position: relative; }
+    .board__node:first-child {
+      border-left: 1px solid #B39CD0; }
+    .board__node--front {
       width: 2.8rem;
-      height: 2.8rem;
-      border: 1px solid #7ed56f;
-      transition: all .5s; }
+      height: 2.8rem; }
+    .board__node .startNode {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      visibility: hidden; }
   .board__startNode {
-    background-color: #ffb900; }
+    color: #00C9A7; }
+    .board__startNode .startNode {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      visibility: visible; }
   .board__destNode {
-    background-color: #ff7730; }
+    background-color: #845EC2; }
   .board__wallNode {
-    background-color: #28b485; }
+    background-color: #B39CD0; }

@@ -1,6 +1,10 @@
 .board {
   [class^="board__row--"] {
     height: $board-width/50;
+    border-bottom: 1px solid $color-walls;
+    &:first-child {
+      border-top:1px solid $color-walls;
+    }
   }
   padding: 10rem 0;
   width: $board-width;
@@ -11,22 +15,39 @@
     justify-content: center;
     width: $board-width/50;
     height: $board-width/50;
-
-    &--content {
+    border-right: 1px solid $color-walls;
+    position: relative;
+    &:first-child {
+      border-left: 1px solid $color-walls;
+    }
+    // transition: all .3s;
+    &--front {
       width: $board-width/50;
       height: $board-width/50;
-      border: 1px solid $color-primary-light;
-      transition: all .5s;
+    } 
+    .startNode {
+      @include absCenter;
+      visibility: hidden;
     }
   }
-  &__startNode {
-    background-color: $color-secondary-light;
+  &__startNode{
+    color: #00C9A7;
+    .startNode {
+      @include absCenter;
+      visibility: visible;
+    }
+    // animation-name: animateScale;
+    // animation-duration: .3s;
+    // animation-timing-function: ease-out;
+    // animation-timing-function: cubic-bezier(.03, .56, .97, -0.09);
+    // background-color: #00C9A7;
+      
   }
   &__destNode {
-    background-color: $color-secondary-dark;
+    background-color: #845EC2;
   }
   &__wallNode {
-    background-color: $color-primary-dark;
+    background-color: $color-walls;
   }
 }
 

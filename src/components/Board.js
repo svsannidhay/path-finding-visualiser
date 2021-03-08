@@ -199,6 +199,10 @@ class Board extends React.Component {
           nodes: newNodes
         });
       } else {
+        // If its a wall node then first remove wall and add start there 
+        if(this.state.nodes[rowIndex][colIndex] === 2) {
+          this.toggleClassWallNode(rowIndex,colIndex,'remove');
+        }
         const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 1;
         this.setState({
@@ -220,7 +224,11 @@ class Board extends React.Component {
           isDestNodeDragged: false,
           nodes: newNodes
         });
-      } else {  
+      } else {
+        // If its a wall node then first remove wall and add start there 
+        if(this.state.nodes[rowIndex][colIndex] === 2) {
+          this.toggleClassWallNode(rowIndex,colIndex,'remove');
+        }  
         const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 3;
         this.setState({
