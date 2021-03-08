@@ -9,16 +9,16 @@ class Board extends React.Component {
     super(props);
     this.state = {
       nodes: [],
-      startNodeSelected: false,
-      destNodeSelected: false,
-      startNodeMoving: false,
-      destNodeMoving: false,
-      buildingWalls: false,
+      isStartNodeCreated: false,
+      isDestNodeCreated: false,
+      isStartNodeDragged: false,
+      isDestNodeDragged: false,
+      areWeBuildingWalls: false,
       prevRowIndex: -1,
       prevColIndex : -1
     };
   }
-
+  //Create the board with the current state 
   createBoard = () => {
     const nodes = [];
     for (let i=0; i<25; i++) {
@@ -48,152 +48,209 @@ class Board extends React.Component {
     this.setState({nodes: board});
   }
 
-
-
-  onNodeSelect = (rowIndex,colIndex) => {
-    console.log(`Node selected ${rowIndex} ${colIndex}`);
-    const newNodes = this.createBoard();
-    if(this.state.startNodeSelected===false) {
-      newNodes[rowIndex][colIndex] = 1;
-      document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__startNode');
-      this.setState({
-        startNodeSelected: true
-      });
-    } else if (this.state.destNodeSelected===false) {
-      newNodes[rowIndex][colIndex] = 3;
-      document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__destNode');
-      this.setState ({
-        destNodeSelected: true
-      });
-    } 
-    this.setState({nodes: newNodes});
+  toggleClassStartNode = (x,y,toggle) => {
+    if(toggle === 'add')  document.getElementById(`${x}+${y}`).classList.add('board__startNode');
+    if(toggle === 'remove') document.getElementById(`${x}+${y}`).classList.remove('board__startNode');
   }
+
+  toggleClassDestNode = (x,y,toggle) => {
+    if(toggle === 'add')  document.getElementById(`${x}+${y}`).classList.add('board__destNode');
+    if(toggle === 'remove') document.getElementById(`${x}+${y}`).classList.remove('board__destNode');
+  }
+
+  toggleClassWallNode = (x,y,toggle) => {
+    if(toggle === 'add')  document.getElementById(`${x}+${y}`).classList.add('board__wallNode');
+    if(toggle === 'remove') document.getElementById(`${x}+${y}`).classList.remove('board__wallNode');
+  }
+
 
   onButtonDown = (rowIndex,colIndex) => {
-    console.log(`Mouse Down ${rowIndex},${colIndex}`);
-    //If its a start node
-    if(this.state.nodes[rowIndex][colIndex]===1) {
+    // When we want to create a start Node
+    if(this.state.isStartNodeCreated === false) {
       const newNodes = this.createBoard();
-      newNodes[rowIndex][colIndex] = 0;
+      newNodes[rowIndex][colIndex] = 1;
+      this.toggleClassStartNode(rowIndex,colIndex,'add');
       this.setState({
-        startNodeMoving: true,
-        prevRowIndex: rowIndex,
-        prevColIndex: colIndex,
-        nodes: newNodes
-      });
-    } 
-    // If its a destination node
-    else if(this.state.nodes[rowIndex][colIndex]===3) {
-      const newNodes = this.createBoard();
-      newNodes[rowIndex][colIndex] = 0;
-      this.setState({
-        destNodeMoving: true,
-        prevRowIndex: rowIndex,
-        prevColIndex: colIndex,
+        isStartNodeCreated: true,
         nodes: newNodes
       });
     }
-    // start building walls
-    else if(this.state.startNodeSelected === true && this.state.destNodeSelected === true) { 
+    // when we want to create a destinaton node
+    else if (this.state.isDestNodeCreated === false) {
       const newNodes = this.createBoard();
-// toggle the state of wall or no wall
-      if(this.state.nodes[rowIndex][colIndex] === 0) {
-        newNodes[rowIndex][colIndex] = 2;
-        document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__wallNode');
-      } else if (this.state.nodes[rowIndex][colIndex] === 2){
-        newNodes[rowIndex][colIndex] = 0;
-        document.getElementById(`${rowIndex}+${colIndex}`).classList.remove('board__wallNode');
+      newNodes[rowIndex][colIndex] = 3;
+      this.toggleClassDestNode(rowIndex,colIndex,'add');
+      this.setState({
+        isDestNodeCreated: true,
+        nodes: newNodes
+      });
+    }
+    // When we want to drag start node
+    else if (this.state.nodes[rowIndex][colIndex] === 1) {
+      const newNodes = this.createBoard();
+      newNodes[rowIndex][colIndex] = 0;
+      this.setState({
+        isStartNodeDragged: true,
+        nodes: newNodes
+      });
+    }
+    // When we want to drag destination node
+    else if (this.state.nodes[rowIndex][colIndex] === 3) {
+      const newNodes = this.createBoard();
+      newNodes[rowIndex][colIndex] = 0;
+      this.setState({
+        isDestNodeDragged: true,
+        nodes: newNodes
+      });
+    }
+    // When we want to toggle walls  
+    else {
+      if(this.state.nodes[rowIndex][colIndex]!==1 && this.state.nodes[rowIndex][colIndex] !==3){
+        // Build wall
+        if(this.state.nodes[rowIndex][colIndex] === 0) {
+          const newNodes = this.createBoard();
+          newNodes[rowIndex][colIndex] = 2;
+          this.toggleClassWallNode(rowIndex,colIndex,'add');
+          this.setState({
+            nodes: newNodes
+          });
+        }
+        // Remove wall
+        else if(this.state.nodes[rowIndex][colIndex] === 2) {
+          const newNodes = this.createBoard();
+          newNodes[rowIndex][colIndex] = 0;
+          this.toggleClassWallNode(rowIndex,colIndex,'remove');
+          this.setState({
+            nodes: newNodes
+          });
+        }
       }
       this.setState({
-        nodes: newNodes,
-        buildingWalls: true,
-      })
+        areWeBuildingWalls: true,
+      });
     } 
   }
 
-  onButtonOn = async (rowIndex,colIndex) => {
-
-    //This will track the time when mouse is down but not up 
-    // If startNode is moved from its position but not placed over final position
-    if(this.state.startNodeMoving === true) {
-      document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__startNode');
-      let preR = this.state.prevRowIndex;
-      let preC = this.state.prevColIndex;
-      setTimeout( () => {document.getElementById(`${preR}+${preC}`).classList.remove('board__startNode')},5);
-      this.setState({
-        prevRowIndex: rowIndex,
-        prevColIndex: colIndex
-      });
+  onButtonOver = (rowIndex,colIndex) => {
+    // If start Node is getting dragged make the current node start Node
+    if(this.state.isStartNodeDragged === true) {
+      this.toggleClassStartNode(rowIndex,colIndex,'add');
     }
-    // If destNode is moved from its position but not placed over final position
-    if(this.state.destNodeMoving === true) {
-      document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__destNode');
-      let preR = this.state.prevRowIndex;
-      let preC = this.state.prevColIndex;
-      setTimeout( () => {document.getElementById(`${preR}+${preC}`).classList.remove('board__destNode')},5);
-      this.setState({
-        prevRowIndex: rowIndex,
-        prevColIndex: colIndex
-      });
+    // If destination Node is gertting dragged make the current node dest Node
+    if(this.state.isDestNodeDragged === true) {
+      this.toggleClassDestNode(rowIndex,colIndex,'add');
     }
-    // if we were building walls then built it here
-    if(this.state.buildingWalls === true) {
-      const newNodes = this.createBoard();
-      // toggle the state of wall or no wall
+    // If we are building walls toggle the walls if its not a start or destination node
+    if(this.state.areWeBuildingWalls === true && this.state.nodes[rowIndex][colIndex]!==1 && this.state.nodes[rowIndex][colIndex] !==3) {
+      // Build wall
       if(this.state.nodes[rowIndex][colIndex] === 0) {
+        const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 2;
-        document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__wallNode');
-      } else if (this.state.nodes[rowIndex][colIndex] === 2){
-        newNodes[rowIndex][colIndex] = 0;
-        document.getElementById(`${rowIndex}+${colIndex}`).classList.remove('board__wallNode');
+        this.toggleClassWallNode(rowIndex,colIndex,'add');
+        this.setState({
+          nodes: newNodes
+        });
       }
+      // Remove wall
+      else if(this.state.nodes[rowIndex][colIndex] === 2) {
+        const newNodes = this.createBoard();
+        newNodes[rowIndex][colIndex] = 0;
+        this.toggleClassWallNode(rowIndex,colIndex,'remove');
+        this.setState({
+          nodes: newNodes
+        });
+      }
+    } 
+  }
+
+  onButtonOut = (rowIndex,colIndex) => {
+    // If start Node is getting dragged remove the start Node from here
+    // Set the previous positions to this location so that inCase we can't place nodes
+    // on their final position we should be able to place them on previous position
+    if(this.state.isStartNodeDragged === true) {
+      this.toggleClassStartNode(rowIndex,colIndex,'remove');
       this.setState({
-        nodes: newNodes
+        prevRowIndex: rowIndex,
+        prevColIndex: colIndex
+      });
+    }
+    // If destination Node is getting dragged remove the destination node from here
+    if(this.state.isDestNodeDragged === true) {
+      this.toggleClassDestNode(rowIndex,colIndex,'remove');
+      this.setState({
+        prevRowIndex: rowIndex,
+        prevColIndex: colIndex
       });
     }
   }
 
   onButtonUp = (rowIndex,colIndex) => {
-    console.log(`Mouse up ${rowIndex},${colIndex}`);
-    //if Start was moved then place it here
-    if(this.state.nodes[rowIndex][colIndex]!==3&&this.state.startNodeMoving=== true) {
-      const newNodes = this.createBoard();
-      newNodes[rowIndex][colIndex] = 1;
-      // document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__startNode');
+    // If start Node was getting dragged stop it and update state
+    if(this.state.isStartNodeDragged === true) {
+      // if user accidently place source node on destination node then place it
+      // on previous valid poition rather than here.
+      if(this.state.nodes[rowIndex][colIndex] === 3) {
+        const newNodes = this.createBoard();
+        newNodes[this.state.prevRowIndex][this.state.prevColIndex] = 1;
+        this.toggleClassStartNode(rowIndex,colIndex,'remove');
+        this.toggleClassStartNode(this.state.prevRowIndex,this.state.prevColIndex,'add');
+        this.setState({
+          isStartNodeDragged: false,
+          nodes: newNodes
+        });
+      } else {
+        const newNodes = this.createBoard();
+        newNodes[rowIndex][colIndex] = 1;
+        this.setState({
+          isStartNodeDragged: false,
+          nodes: newNodes
+        }); 
+      }
+    }
+    // If destination Node was getting dragged stop it and update state 
+    if(this.state.isDestNodeDragged === true) {
+      // if user accidently place destination node on start node then place it
+      // on previous valid poition rather than here.
+      if(this.state.nodes[rowIndex][colIndex] === 1){
+        const newNodes = this.createBoard();
+        newNodes[this.state.prevRowIndex][this.state.prevColIndex] = 3;
+        this.toggleClassDestNode(rowIndex,colIndex,'remove');
+        this.toggleClassDestNode(this.state.prevRowIndex,this.state.prevColIndex,'add');
+        this.setState({
+          isDestNodeDragged: false,
+          nodes: newNodes
+        });
+      } else {  
+        const newNodes = this.createBoard();
+        newNodes[rowIndex][colIndex] = 3;
+        this.setState({
+          isDestNodeDragged: false,
+          nodes: newNodes
+        });
+      }
+    }
+    // If we were building walls stop it 
+    if(this.state.areWeBuildingWalls === true) {
       this.setState({
-        startNodeMoving: false,
-        nodes: newNodes
+        areWeBuildingWalls: false,
       });
     }
-    //if destination was moved then place it here
-    if(this.state.nodes[rowIndex][colIndex]!==1&&this.state.destNodeMoving=== true) {
-      const newNodes = this.createBoard();
-      newNodes[rowIndex][colIndex] = 3;
-      document.getElementById(`${rowIndex}+${colIndex}`).classList.add('board__destNode');
-      this.setState({
-        destNodeMoving: false,
-        nodes: newNodes
-      });
-    }
-    // thats enough stop building more walls
-    if(this.state.buildingWalls === true) {
-      this.setState({
-        buildingWalls: false
-      });
-    }
-  } 
+  }
 
+  
+  
   render() {
+    console.log(this.state.nodes);
     return (
       <div className="board">
         {
           this.state.nodes.map((row,i) => {
             return <div className = {`board__row--${i}`} key = {`${i}`}>
               { row.map((node,j) => <Node key = {`${i}+${j}`}  
-              onNodeSelect = {this.onNodeSelect} 
               onButtonDown = {this.onButtonDown} 
               onButtonUp = {this.onButtonUp} 
-              onButtonOn = {this.onButtonOn}
+              onButtonOver = {this.onButtonOver}
+              onButtonOut = {this.onButtonOut}
               nodeVal = {this.state.nodes[i][j]} row = {i} col = {j}></Node>) }
             </div>
           })

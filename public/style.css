@@ -89,7 +89,7 @@ body {
       width: 2.8rem;
       height: 2.8rem;
       border: 1px solid #7ed56f;
-      transition: all .4s; }
+      transition: all .5s; }
   .board__startNode {
     background-color: #ffb900; }
   .board__destNode {
