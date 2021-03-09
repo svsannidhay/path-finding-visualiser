@@ -1,5 +1,4 @@
 import React from 'react';
-import OpenWithIcon from '@material-ui/icons/OpenWith';
 
 class Node extends React.Component {
   
@@ -19,7 +18,7 @@ class Node extends React.Component {
           board__node--gradient-border`
         }>
           <div className = "startNode">
-            <OpenWithIcon fontSize = 'large' color = 'inherit'/>
+            <ion-icon name="move"></ion-icon>
           </div>
         </div>
       </div>

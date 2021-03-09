@@ -36,7 +36,9 @@
 
 @keyframes animateScale {
   0% {
-    transform: scale(0.01); }
+    transform: scale(0.4); }
+  75% {
+    transform: scale(1.3); }
   100% {
     transform: scale(1); } }
 
@@ -85,37 +87,40 @@ body {
   margin: 0 auto; }
   .board [class^="board__row--"] {
     height: 2.8rem;
-    border-bottom: 1px solid #B39CD0; }
+    border-bottom: 1px solid #C9C5CB; }
     .board [class^="board__row--"]:first-child {
-      border-top: 1px solid #B39CD0; }
+      border-top: 1px solid #C9C5CB; }
   .board__node {
     display: inline-block;
     align-items: center;
     justify-content: center;
     width: 2.8rem;
     height: 2.8rem;
-    border-right: 1px solid #B39CD0;
+    border-right: 1px solid #C9C5CB;
     position: relative; }
     .board__node:first-child {
-      border-left: 1px solid #B39CD0; }
+      border-left: 1px solid #C9C5CB; }
     .board__node--front {
       width: 2.8rem;
       height: 2.8rem; }
     .board__node .startNode {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      visibility: hidden; }
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0; }
+      .board__node .startNode ion-icon {
+        display: block;
+        width: 100%;
+        height: 100%; }
   .board__startNode {
-    color: #00C9A7; }
+    color: #646E68;
+    animation-name: animateScale;
+    animation-duration: .3s;
+    animation-timing-function: ease-out;
+    animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99); }
     .board__startNode .startNode {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      visibility: visible; }
+      opacity: 1; }
   .board__destNode {
     background-color: #845EC2; }
   .board__wallNode {
-    background-color: #B39CD0; }
+    background-color: #C9C5CB; }

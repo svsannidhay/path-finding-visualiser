@@ -14,6 +14,8 @@ class Board extends React.Component {
       isStartNodeDragged: false,
       isDestNodeDragged: false,
       areWeBuildingWalls: false,
+      isWallRemovedByStart: false,
+      isWallRemovedByDest: false,
       prevRowIndex: -1,
       prevColIndex : -1
     };
@@ -133,11 +135,23 @@ class Board extends React.Component {
 
   onButtonOver = (rowIndex,colIndex) => {
     // If start Node is getting dragged make the current node start Node
-    if(this.state.isStartNodeDragged === true) {
+    if(this.state.isStartNodeDragged === true && this.state.nodes[rowIndex][colIndex] !==3) {
+      if(this.state.nodes[rowIndex][colIndex] === 2) {
+        this.toggleClassWallNode(rowIndex,colIndex,'remove');
+        this.setState({
+          isWallRemovedByStart: true,
+        });
+      }
       this.toggleClassStartNode(rowIndex,colIndex,'add');
     }
     // If destination Node is gertting dragged make the current node dest Node
-    if(this.state.isDestNodeDragged === true) {
+    if(this.state.isDestNodeDragged === true && this.state.nodes[rowIndex][colIndex]!==3) {
+      if(this.state.nodes[rowIndex][colIndex] === 2) {
+        this.toggleClassWallNode(rowIndex,colIndex,'remove');
+        this.setState({
+          isWallRemovedByDest: true,
+        });
+      }
       this.toggleClassDestNode(rowIndex,colIndex,'add');
     }
     // If we are building walls toggle the walls if its not a start or destination node
@@ -167,7 +181,17 @@ class Board extends React.Component {
     // If start Node is getting dragged remove the start Node from here
     // Set the previous positions to this location so that inCase we can't place nodes
     // on their final position we should be able to place them on previous position
+    // if the current position was wall and start is moved then make it a wall again
     if(this.state.isStartNodeDragged === true) {
+      if(this.state.isWallRemovedByStart === true) {
+        const newNodes = this.createBoard();
+        newNodes[rowIndex][colIndex] = 2;
+        this.toggleClassWallNode(rowIndex,colIndex,'add');
+        this.setState({
+          isWallRemovedByStart : false,
+          nodes: newNodes
+        });
+      }
       this.toggleClassStartNode(rowIndex,colIndex,'remove');
       this.setState({
         prevRowIndex: rowIndex,
@@ -176,6 +200,15 @@ class Board extends React.Component {
     }
     // If destination Node is getting dragged remove the destination node from here
     if(this.state.isDestNodeDragged === true) {
+      if(this.state.isWallRemovedByDest === true) {
+        const newNodes = this.createBoard();
+        newNodes[rowIndex][colIndex] = 2;
+        this.toggleClassWallNode(rowIndex,colIndex,'add');
+        this.setState({
+          isWallRemovedByDest: false,
+          nodes: newNodes
+        });
+      }
       this.toggleClassDestNode(rowIndex,colIndex,'remove');
       this.setState({
         prevRowIndex: rowIndex,
@@ -191,7 +224,9 @@ class Board extends React.Component {
       // on previous valid poition rather than here.
       if(this.state.nodes[rowIndex][colIndex] === 3) {
         const newNodes = this.createBoard();
+        console.log(this.state.prevRowIndex,this.state.prevColIndex);
         newNodes[this.state.prevRowIndex][this.state.prevColIndex] = 1;
+        console.log(newNodes);
         this.toggleClassStartNode(rowIndex,colIndex,'remove');
         this.toggleClassStartNode(this.state.prevRowIndex,this.state.prevColIndex,'add');
         this.setState({
