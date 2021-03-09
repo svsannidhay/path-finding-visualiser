@@ -20,6 +20,12 @@ class Node extends React.Component {
           <div className = "startNode">
             <ion-icon name="move"></ion-icon>
           </div>
+          <div className = "destNode">
+            <ion-icon name="location"></ion-icon>
+          </div>
+          <div className = "wallNode">
+            
+          </div>
         </div>
       </div>
     );

@@ -135,7 +135,7 @@ class Board extends React.Component {
 
   onButtonOver = (rowIndex,colIndex) => {
     // If start Node is getting dragged make the current node start Node
-    if(this.state.isStartNodeDragged === true && this.state.nodes[rowIndex][colIndex] !==3) {
+    if(this.state.isStartNodeDragged === true && this.state.nodes[rowIndex][colIndex] !== 3) {
       if(this.state.nodes[rowIndex][colIndex] === 2) {
         this.toggleClassWallNode(rowIndex,colIndex,'remove');
         this.setState({
@@ -145,7 +145,7 @@ class Board extends React.Component {
       this.toggleClassStartNode(rowIndex,colIndex,'add');
     }
     // If destination Node is gertting dragged make the current node dest Node
-    if(this.state.isDestNodeDragged === true && this.state.nodes[rowIndex][colIndex]!==3) {
+    if(this.state.isDestNodeDragged === true && this.state.nodes[rowIndex][colIndex] !== 1) {
       if(this.state.nodes[rowIndex][colIndex] === 2) {
         this.toggleClassWallNode(rowIndex,colIndex,'remove');
         this.setState({
@@ -283,7 +283,6 @@ class Board extends React.Component {
   
   
   render() {
-    console.log(this.state.nodes);
     return (
       <div className="board">
         {
