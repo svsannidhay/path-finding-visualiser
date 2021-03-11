@@ -65,6 +65,11 @@ html {
 body {
   box-sizing: border-box; }
 
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.7; }
+
 .row {
   max-width: 134rem;
   margin: 0 auto; }
@@ -165,3 +170,38 @@ body {
     -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     opacity: 1; }
+
+.nav {
+  background-image: linear-gradient(to bottom, #BAACBD, #D7D9D7); }
+  .nav__ul {
+    list-style: none;
+    color: #646E68; }
+    .nav__ul--item {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-size: 2rem; }
+
+.btn, .btn:link, .btn:visited {
+  color: #646E68;
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  border-radius: .1rem;
+  transition: transform 0.2s;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active, .btn:focus {
+  outline: none;
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }

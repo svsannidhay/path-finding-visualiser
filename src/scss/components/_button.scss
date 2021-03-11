@@ -1,0 +1,36 @@
+.btn {
+    &,
+    &:link,
+    &:visited {
+      color: $color-nav-text;
+      display: inline-block;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      border-radius: .1rem;
+      transition: transform 0.2s;
+      position: relative;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 1rem 1rem rgba($color-black, .2);
+    }
+
+    &:hover {
+      transform: translateY(-0.2rem);
+      box-shadow: 0 2rem 2rem rgba($color-black, .2);
+
+      &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+    }
+    &:active,
+    &:focus {
+      outline: none;
+      transform: translateY(-0.1rem);
+      box-shadow: 0 0.5rem 1rem rgba($color-black, .2);
+    }
+}
+
+
+

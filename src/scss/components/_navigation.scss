@@ -1,0 +1,15 @@
+.nav {
+  background-image: linear-gradient(to bottom,#BAACBD,#D7D9D7);
+  
+  &__ul {
+    list-style: none;
+    color: $color-nav-text;
+    &--item {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-size: 2rem;
+    }
+  }
+
+}
+

@@ -1,10 +1,14 @@
 import React from 'react';
 import Board from './Board';
+import Navigation from './Navigation'
 
 class App extends React.Component {
   render () {
     return (
-      <Board/>
+      <div>
+        <Navigation/>
+        <Board/>
+      </div>
     );
   };
 };
