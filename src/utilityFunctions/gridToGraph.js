@@ -9,8 +9,8 @@ const gridToGraph = (grid) => {
   }
 
   const addEdge = (u,v) => {
-    adj[v].push(u);
-    adj[u].push(v);
+    adj[v].push([u,1]);
+    adj[u].push([v,1]);
   }
 
   for(let i = 0; i < 25; i++) {

@@ -2,6 +2,7 @@ import React from 'react';
 import Node from './Node';
 import gridToGraph from '../../utilityFunctions/gridToGraph';
 import { findStartNode , findDestNode } from '../../utilityFunctions/findMarkers';
+import spDijkstra from '../../algorithms/dijkstra';
 
 class Board extends React.Component {
 
@@ -52,12 +53,16 @@ class Board extends React.Component {
 
   componentDidUpdate() {
     if(this.props.isVisualizationStarted) {
+
       let adj = gridToGraph(this.state.nodes);
       let startNode = findStartNode(this.state.nodes);
       let destNode = findDestNode(this.state.nodes);
-      console.log(adj);
-      console.log(startNode);
-      console.log(destNode);
+
+      let dijkstra = spDijkstra(adj,startNode,destNode,1251);
+      let path = dijkstra[0];
+      let orderVisited = dijkstra[1];
+      console.log(path);
+      console.log(orderVisited);
       // 2. Now Apply dijkstra
       // 3. Animate the return path and visited nodes
       this.props.onVisualizationEnd();
