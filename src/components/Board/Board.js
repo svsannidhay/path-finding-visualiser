@@ -1,7 +1,7 @@
 import React from 'react';
 import Node from './Node';
 import gridToGraph from '../../utilityFunctions/gridToGraph';
-
+import { findStartNode , findDestNode } from '../../utilityFunctions/findMarkers';
 
 class Board extends React.Component {
 
@@ -52,8 +52,12 @@ class Board extends React.Component {
 
   componentDidUpdate() {
     if(this.props.isVisualizationStarted) {
-      // 1. Covert the current grid to adjacency list so that we can apply dijkstra using minimum heap
       let adj = gridToGraph(this.state.nodes);
+      let startNode = findStartNode(this.state.nodes);
+      let destNode = findDestNode(this.state.nodes);
+      console.log(adj);
+      console.log(startNode);
+      console.log(destNode);
       // 2. Now Apply dijkstra
       // 3. Animate the return path and visited nodes
       this.props.onVisualizationEnd();
