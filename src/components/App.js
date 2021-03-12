@@ -1,5 +1,5 @@
 import React from 'react';
-import Board from './Board';
+import Board from './Board/Board';
 import Navigation from './Navigation'
 
 class App extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Node from './Node';
-
+import gridToGraph from '../../utilityFunctions/gridToGraph';
 
 
 class Board extends React.Component {
@@ -52,8 +52,10 @@ class Board extends React.Component {
 
   componentDidUpdate() {
     if(this.props.isVisualizationStarted) {
-      console.log(`let's do this`);
-          //  After visulatizing every thing 
+      // 1. Covert the current grid to adjacency list so that we can apply dijkstra using minimum heap
+      let adj = gridToGraph(this.state.nodes);
+      // 2. Now Apply dijkstra
+      // 3. Animate the return path and visited nodes
       this.props.onVisualizationEnd();
     }
   }
