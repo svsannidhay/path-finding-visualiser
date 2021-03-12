@@ -50,6 +50,14 @@ class Board extends React.Component {
     this.setState({nodes: board});
   }
 
+  componentDidUpdate() {
+    if(this.props.isVisualizationStarted) {
+      console.log(`let's do this`);
+          //  After visulatizing every thing 
+      this.props.onVisualizationEnd();
+    }
+  }
+
   toggleClassStartNode = (x,y,toggle) => {
     if(toggle === 'add')  document.getElementById(`${x}+${y}`).classList.add('board__startNode');
     if(toggle === 'remove') document.getElementById(`${x}+${y}`).classList.remove('board__startNode');
