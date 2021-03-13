@@ -4,6 +4,7 @@
     border-bottom: 1px solid $color-walls;
     &:first-child {
       border-top:1px solid $color-walls;
+      height: $board-width/50 + .1rem;
     }
   }
   padding: 10rem 0;
@@ -11,11 +12,11 @@
   margin: 0 auto;
   &__node {
     display: inline-block;
-    align-items: center;
-    justify-content: center;
     width: $board-width/50;
-    height: $board-width/50;
+    height: $board-width/50 - .1rem;
+    vertical-align: bottom;
     border-right: 1px solid $color-walls;
+    // border-bottom: 1px solid transparent;
     position: relative;
     &:first-child {
       border-left: 1px solid $color-walls;
@@ -59,6 +60,14 @@
       background-color: $color-walls;
       opacity: 0;
     }
+    .visitedNode {
+      position: absolute;
+      display: block;
+      width:100%;
+      height:100%;
+      background-color: #B48EAE;
+      opacity: 0;
+    }
   }
   &__startNode{
     color: #646E68;
@@ -93,6 +102,16 @@
       opacity: 1;
     }
   }
+  &__visited {
+    .visitedNode {
+      animation-name: animateWalls;
+      animation-duration: .3s;
+      animation-timing-function: ease-out;
+      animation-timing-function: cubic-bezier(.58, .01, .55, .99);
+      opacity: 1;
+    }
+  }
+
 }
 
 

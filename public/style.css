@@ -104,13 +104,13 @@ body {
     height: 2.8rem;
     border-bottom: 1px solid #C9C5CB; }
     .board [class^="board__row--"]:first-child {
-      border-top: 1px solid #C9C5CB; }
+      border-top: 1px solid #C9C5CB;
+      height: 2.9rem; }
   .board__node {
     display: inline-block;
-    align-items: center;
-    justify-content: center;
     width: 2.8rem;
-    height: 2.8rem;
+    height: 2.7rem;
+    vertical-align: bottom;
     border-right: 1px solid #C9C5CB;
     position: relative; }
     .board__node:first-child {
@@ -145,6 +145,13 @@ body {
       height: 100%;
       background-color: #C9C5CB;
       opacity: 0; }
+    .board__node .visitedNode {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #B48EAE;
+      opacity: 0; }
   .board__startNode {
     color: #646E68; }
     .board__startNode .startNode {
@@ -169,6 +176,12 @@ body {
     -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    opacity: 1; }
+  .board__visited .visitedNode {
+    animation-name: animateWalls;
+    animation-duration: .3s;
+    animation-timing-function: ease-out;
+    animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1; }
 
 .nav {

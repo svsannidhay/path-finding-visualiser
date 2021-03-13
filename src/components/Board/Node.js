@@ -26,6 +26,9 @@ class Node extends React.Component {
           <div className = "wallNode">
             
           </div>
+          <div className = "visitedNode">
+            
+          </div>
         </div>
       </div>
     );
