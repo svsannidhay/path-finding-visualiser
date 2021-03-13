@@ -1,3 +1,5 @@
+import { gridNodeToGraphNode } from './conversions';
+
 const gridToGraph = (grid) => {
   console.log(grid);
 
@@ -18,15 +20,15 @@ const gridToGraph = (grid) => {
       if(i !== 24) {
         if(grid[i][j] !== 2 && grid[i+1][j] !== 2) {
           // add Edge
-          let u = (i * 50) + (j);
-          let v = ((i+1) * 50) + (j);
+          let u = gridNodeToGraphNode(i,j);
+          let v = gridNodeToGraphNode(i+1,j);
           addEdge(u,v);
         } 
       }
       if(j !== 49) {
         if(grid[i][j] !== 2 && grid[i][j+1] !== 2) {
-          let u = (i * 50) + (j);
-          let v = (i * 50) + (j + 1);
+          let u = gridNodeToGraphNode(i,j);
+          let v = gridNodeToGraphNode(i,j+1);
           addEdge(u,v);
         }
       }

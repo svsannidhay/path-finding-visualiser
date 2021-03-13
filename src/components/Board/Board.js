@@ -1,8 +1,11 @@
 import React from 'react';
 import Node from './Node';
+
+
 import gridToGraph from '../../utilityFunctions/gridToGraph';
 import { findStartNode , findDestNode } from '../../utilityFunctions/findMarkers';
 import spDijkstra from '../../algorithms/dijkstra';
+import { graphNodeToGridNode } from '../../utilityFunctions/conversions';
 
 class Board extends React.Component {
 
@@ -54,17 +57,28 @@ class Board extends React.Component {
   componentDidUpdate() {
     if(this.props.isVisualizationStarted) {
 
+      // Coverting grid to graph
       let adj = gridToGraph(this.state.nodes);
       let startNode = findStartNode(this.state.nodes);
       let destNode = findDestNode(this.state.nodes);
 
+      // Applying Dijkstra's algorithm
       let dijkstra = spDijkstra(adj,startNode,destNode,1251);
-      let path = dijkstra[0];
-      let orderVisited = dijkstra[1];
+      let path = [];
+      let orderVisited = [];
+      for(let i=0;i<dijkstra[0].length;i++) {
+        let gridNode = graphNodeToGridNode(dijkstra[0][i]);
+        path.push(gridNode);
+      }
+      for(let i=0;i<dijkstra[1].length;i++) {
+        let gridNode = graphNodeToGridNode(dijkstra[1][i]);
+        orderVisited.push(gridNode);
+      }
       console.log(path);
       console.log(orderVisited);
-      // 2. Now Apply dijkstra
       // 3. Animate the return path and visited nodes
+
+      
       this.props.onVisualizationEnd();
     }
   }
