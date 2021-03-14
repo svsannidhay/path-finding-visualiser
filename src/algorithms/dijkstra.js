@@ -36,6 +36,7 @@ const spDijkstra = (adj,startNode,destNode,n) => {
     let distcurr = current[1];
     let v = current[0];
     if(distcurr > dist[v]) continue;
+    if(distcurr > dist[destNode]) continue;
     for(let i=0;i<adj[v].length;i++) {
       let node = adj[v][i];
       let index = node[0];

@@ -6,7 +6,7 @@ import gridToGraph from '../../utilityFunctions/gridToGraph';
 import { findStartNode , findDestNode } from '../../utilityFunctions/findMarkers';
 import spDijkstra from '../../algorithms/dijkstra';
 import { graphNodeToGridNode } from '../../utilityFunctions/conversions';
-import { animateVisitedNode }  from '../../utilityFunctions/animateVisitedNode';
+import { animateVisitedNodes,animatePathNodes }  from '../../utilityFunctions/animateNode';
 
 
 class Board extends React.Component {
@@ -58,12 +58,10 @@ class Board extends React.Component {
     this.setState({nodes: board});
   }
 
-  animateVisitedNodes = async (orderVisited) => {
-    for(let i =0 ;i<orderVisited.length;i++) {
-      console.log('animating');
-      await animateVisitedNode(orderVisited[i][0],orderVisited[i][1]);
-    }
-  } 
+  animate = async (orderVisited,path,startNode,destNode) => {
+    await animateVisitedNodes(orderVisited,startNode,destNode);
+    await animatePathNodes(path,startNode,destNode);
+  }
 
   componentDidUpdate() {
     if(this.props.isVisualizationStarted) {
@@ -88,8 +86,10 @@ class Board extends React.Component {
       console.log(path);
       console.log(orderVisited);
       // 3. Animate the return path and visited nodes
-      this.animateVisitedNodes(orderVisited);
-
+      //Animate visited nodes
+      this.animate(orderVisited,path,startNode,destNode);
+      //Animate Path found
+      
 
       this.props.onVisualizationEnd();
     }

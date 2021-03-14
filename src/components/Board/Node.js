@@ -27,6 +27,9 @@ class Node extends React.Component {
             
           </div>
           <div className = "visitedNode">
+
+          </div>
+          <div className = "pathNode">
             
           </div>
         </div>
