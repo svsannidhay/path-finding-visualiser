@@ -65,15 +65,14 @@
       display: block;
       width:100%;
       height:100%;
-      background-color: #B48EAE;
       opacity: 0;
+
     }
     .pathNode {
       position: absolute;
       display: block;
       width:100%;
       height:100%;
-      background-color: #D7D9D7;
       opacity: 0;
     }
   }
@@ -112,12 +111,54 @@
   }
   &__visited {
     .visitedNode {
-      animation-name: animateWalls;
-      animation-duration: .2s;
+      animation-name: animateVisited;
+      animation-duration: 1s;
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
       opacity: 1;
+      // background-color: #EAC8CA;
+      background-color: #E39EC1;
     }
+
+    &--startNode {
+      .pathNode {
+        animation-name: animateWalls;
+        animation-duration: .3s;
+        animation-timing-function: ease-out;
+        animation-timing-function: cubic-bezier(.58, .01, .55, .99);
+        opacity: 1;
+        background-color: #77567A;
+        -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+        -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+        box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      }
+
+      .startNode {
+        color: white;
+        z-index: 999;
+      }
+    }
+
+    &--destNode {
+      .pathNode {
+        animation-name: animateWalls;
+        animation-duration: .3s;
+        animation-timing-function: ease-out;
+        animation-timing-function: cubic-bezier(.58, .01, .55, .99);
+        opacity: 1;
+        background-color: #77567A;
+        -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+        -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+        box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      }
+
+      .destNode {
+        color: white;
+        z-index: 999;
+      }
+    }
+
+
   }
   &__path {
     .pathNode {
@@ -125,10 +166,48 @@
       animation-duration: .3s;
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
-      opacity: .5;
+      opacity: 1;
+      background-color: #77567A;
+      -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    }
+    &--startNode {
+      .pathNode {
+        animation-name: animateWalls;
+        animation-duration: .3s;
+        animation-timing-function: ease-out;
+        animation-timing-function: cubic-bezier(.58, .01, .55, .99);
+        opacity: 1;
+        background-color: #77567A;
+        -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+        -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+        box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      }
+      .startNode {
+        color:white;
+        z-index: 999;
+      }
+    }
+    &--destNode {
+      .pathNode {
+        animation-name: animateWalls;
+        animation-duration: .3s;
+        animation-timing-function: ease-out;
+        animation-timing-function: cubic-bezier(.58, .01, .55, .99);
+        opacity: 1;
+        background-color: #77567A;
+        -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+        -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+        box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      }
+
+      .destNode {
+        color: white;
+        z-index: 999;
+      }
     }
   }
-
 }
 
 

@@ -76,3 +76,33 @@
     transform: scale(1);
   }
 }
+@keyframes animateVisited {
+  0% {
+    opacity: 1;
+    transform: scale(.35);
+    background-color: #83f8f6;
+    border-radius: 50%;
+  }
+  1% {
+    opacity: 0;
+    transform: scale(.45);
+    background-color: #D1F5FF;
+    border-radius: 50%;
+  }
+  25% {
+    opacity: 1;
+    transform: scale(.75);
+    background-color: #DEBAC0;
+    border-radius: 50%;
+  }
+  75% {
+    transform: scale(1.1);
+    background-color: #be6fbb;
+    border-radius: 4px;
+  }
+  100% {
+    transform: scale(1);
+    // background-color: #8377D1;
+    border-radius: 5px;
+  }
+}

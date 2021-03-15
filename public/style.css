@@ -52,6 +52,30 @@
   100% {
     transform: scale(1); } }
 
+@keyframes animateVisited {
+  0% {
+    opacity: 1;
+    transform: scale(0.35);
+    background-color: #83f8f6;
+    border-radius: 50%; }
+  1% {
+    opacity: 0;
+    transform: scale(0.45);
+    background-color: #D1F5FF;
+    border-radius: 50%; }
+  25% {
+    opacity: 1;
+    transform: scale(0.75);
+    background-color: #DEBAC0;
+    border-radius: 50%; }
+  75% {
+    transform: scale(1.1);
+    background-color: #be6fbb;
+    border-radius: 4px; }
+  100% {
+    transform: scale(1);
+    border-radius: 5px; } }
+
 *,
 *::after,
 *::before {
@@ -150,14 +174,12 @@ body {
       display: block;
       width: 100%;
       height: 100%;
-      background-color: #B48EAE;
       opacity: 0; }
     .board__node .pathNode {
       position: absolute;
       display: block;
       width: 100%;
       height: 100%;
-      background-color: #D7D9D7;
       opacity: 0; }
   .board__startNode {
     color: #646E68; }
@@ -185,17 +207,74 @@ body {
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     opacity: 1; }
   .board__visited .visitedNode {
-    animation-name: animateWalls;
-    animation-duration: .2s;
+    animation-name: animateVisited;
+    animation-duration: 1s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
-    opacity: 1; }
+    opacity: 1;
+    background-color: #E39EC1; }
+  .board__visited--startNode .pathNode {
+    animation-name: animateWalls;
+    animation-duration: .3s;
+    animation-timing-function: ease-out;
+    animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
+    opacity: 1;
+    background-color: #77567A;
+    -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
+  .board__visited--startNode .startNode {
+    color: white;
+    z-index: 999; }
+  .board__visited--destNode .pathNode {
+    animation-name: animateWalls;
+    animation-duration: .3s;
+    animation-timing-function: ease-out;
+    animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
+    opacity: 1;
+    background-color: #77567A;
+    -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
+  .board__visited--destNode .destNode {
+    color: white;
+    z-index: 999; }
   .board__path .pathNode {
     animation-name: animateWalls;
     animation-duration: .3s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
-    opacity: .5; }
+    opacity: 1;
+    background-color: #77567A;
+    -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
+  .board__path--startNode .pathNode {
+    animation-name: animateWalls;
+    animation-duration: .3s;
+    animation-timing-function: ease-out;
+    animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
+    opacity: 1;
+    background-color: #77567A;
+    -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
+  .board__path--startNode .startNode {
+    color: white;
+    z-index: 999; }
+  .board__path--destNode .pathNode {
+    animation-name: animateWalls;
+    animation-duration: .3s;
+    animation-timing-function: ease-out;
+    animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
+    opacity: 1;
+    background-color: #77567A;
+    -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
+  .board__path--destNode .destNode {
+    color: white;
+    z-index: 999; }
 
 .nav {
   background-image: linear-gradient(to bottom, #BAACBD, #D7D9D7); }

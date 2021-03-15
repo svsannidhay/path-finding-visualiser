@@ -9,9 +9,9 @@ export const animateVisitedNodes = (visited,startNode,destNode) => {
         let interval = setInterval( function(){
           if(count<visited.length) {
             if(visited[count][0] === gridStartNode[0] && visited[count][1] === gridStartNode[1]) {
-              document.getElementById(`${visited[count][0]}+${visited[count][1]}`).classList.add('board__visited--StartNode');
+              document.getElementById(`${visited[count][0]}+${visited[count][1]}`).classList.add('board__visited--startNode');
             } else if (visited[count][0] === gridDestNode[0] && visited[count][1] === gridDestNode[1]) {
-              document.getElementById(`${visited[count][0]}+${visited[count][1]}`).classList.add('board__visited--DestNode');
+              document.getElementById(`${visited[count][0]}+${visited[count][1]}`).classList.add('board__visited--destNode');
             } else {
               document.getElementById(`${visited[count][0]}+${visited[count][1]}`).classList.add('board__visited');
             }
@@ -37,13 +37,12 @@ export const animatePathNodes = (path,startNode,destNode) => {
       let interval = setInterval( function(){
         if(count<path.length) {
           if(path[count][0] === gridStartNode[0] && path[count][1] === gridStartNode[1]) {
-              document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--StartNode');
+              document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--startNode');
             } else if (path[count][0] === gridDestNode[0] && path[count][1] === gridDestNode[1]) {
-              document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--DestNode');
+              document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--destNode');
             } else {
               document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path');
             }
-          // document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path');
         }
         count++;
         if(count >= path.length) {
