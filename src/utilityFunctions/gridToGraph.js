@@ -1,7 +1,6 @@
 import { gridNodeToGraphNode } from './conversions';
 
 const gridToGraph = (grid) => {
-  console.log(grid);
 
   let adj = [];
 

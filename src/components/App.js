@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isVisualizationStarted: false
+      isVisualizationStarted: false,
+      clearBoard: false,
     };
   }
 
@@ -15,21 +16,32 @@ class App extends React.Component {
     this.setState({
       isVisualizationStarted: true
     });
-    console.log('visualization started');
   }
-
   onVisualizationEnd = () => {
     this.setState({
       isVisualizationStarted: false 
     });
-    console.log('visualization ended');
+  }
+
+  onClearBoardStart = () => {
+    this.setState({
+      clearBoard: true
+    });
+    console.log('Clear Board Initiated');
+  }
+
+  onClearBoardEnd = () => {
+    this.setState({
+      clearBoard: false
+    });
+    console.log('Clear Board Ended');
   }
 
   render () {
     return (
       <div>
-        <Navigation onVisualizationStart = {this.onVisualizationStart}/>
-        <Board isVisualizationStarted = {this.state.isVisualizationStarted} onVisualizationEnd = {this.onVisualizationEnd}/>
+        <Navigation onVisualizationStart = {this.onVisualizationStart} onClearBoardStart = {this.onClearBoardStart}/>
+        <Board isVisualizationStarted = {this.state.isVisualizationStarted} onVisualizationEnd = {this.onVisualizationEnd} clearBoard = {this.state.clearBoard} onClearBoardEnd = {this.onClearBoardEnd}/>
       </div>
     );
   };

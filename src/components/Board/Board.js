@@ -7,7 +7,7 @@ import { findStartNode , findDestNode } from '../../utilityFunctions/findMarkers
 import spDijkstra from '../../algorithms/dijkstra';
 import { graphNodeToGridNode } from '../../utilityFunctions/conversions';
 import { animateVisitedNodes,animatePathNodes }  from '../../utilityFunctions/animateNode';
-
+import { clearClasses, newBoard } from '../../utilityFunctions/clearBoard';
 
 class Board extends React.Component {
 
@@ -83,15 +83,21 @@ class Board extends React.Component {
         let gridNode = graphNodeToGridNode(dijkstra[1][i]);
         orderVisited.push(gridNode);
       }
-      console.log(path);
-      console.log(orderVisited);
       // 3. Animate the return path and visited nodes
       //Animate visited nodes
-      this.animate(orderVisited,path,startNode,destNode);
-      //Animate Path found
-      
+      this.animate(orderVisited,path,startNode,destNode);      
 
       this.props.onVisualizationEnd();
+    }
+
+    if(this.props.clearBoard) {
+      clearClasses();
+      this.setState({
+        nodes: newBoard(),
+        isStartNodeCreated: false,
+        isDestNodeCreated: false
+      });
+      this.props.onClearBoardEnd();
     }
   }
 

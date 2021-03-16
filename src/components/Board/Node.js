@@ -14,8 +14,7 @@ class Node extends React.Component {
         id = {`${this.props.row}+${this.props.col}`} 
         className = {
           ` board__node--front
-          ${this.props.row}+${this.props.col} 
-          board__node--gradient-border`
+          ${this.props.row}+${this.props.col}`
         }>
           <div className = "startNode">
             <ion-icon name="move"></ion-icon>

@@ -1,12 +1,12 @@
 .nav {
-  background-image: linear-gradient(to bottom,#BAACBD,#D7D9D7);
+  background-image: linear-gradient(to bottom,$color-purple-dark, $color-purple-dark);
   
   &__ul {
     list-style: none;
     color: $color-nav-text;
     &--item {
       display: inline-block;
-      padding: 1rem 2rem;
+      padding: .8rem 2rem;
       font-size: 2rem;
     }
   }

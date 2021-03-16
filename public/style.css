@@ -56,22 +56,22 @@
   0% {
     opacity: 1;
     transform: scale(0.35);
-    background-color: #83f8f6;
+    background-color: #c0fdff;
     border-radius: 50%; }
   1% {
     opacity: 0;
     transform: scale(0.45);
-    background-color: #D1F5FF;
+    background-color: #c8e7ff;
     border-radius: 50%; }
   25% {
     opacity: 1;
     transform: scale(0.75);
-    background-color: #DEBAC0;
+    background-color: #d0d1ff;
     border-radius: 50%; }
-  75% {
+  50% {
     transform: scale(1.1);
-    background-color: #be6fbb;
-    border-radius: 4px; }
+    background-color: #deaaff;
+    border-radius: 10px; }
   100% {
     transform: scale(1);
     border-radius: 5px; } }
@@ -208,14 +208,14 @@ body {
     opacity: 1; }
   .board__visited .visitedNode {
     animation-name: animateVisited;
-    animation-duration: 1s;
+    animation-duration: 1.2s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;
-    background-color: #E39EC1; }
+    background-color: #f3c4fb; }
   .board__visited--startNode .pathNode {
     animation-name: animateWalls;
-    animation-duration: .3s;
+    animation-duration: .5s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;
@@ -228,7 +228,7 @@ body {
     z-index: 999; }
   .board__visited--destNode .pathNode {
     animation-name: animateWalls;
-    animation-duration: .3s;
+    animation-duration: .5s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;
@@ -241,7 +241,7 @@ body {
     z-index: 999; }
   .board__path .pathNode {
     animation-name: animateWalls;
-    animation-duration: .3s;
+    animation-duration: .4s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;
@@ -277,36 +277,66 @@ body {
     z-index: 999; }
 
 .nav {
-  background-image: linear-gradient(to bottom, #BAACBD, #D7D9D7); }
+  background-image: linear-gradient(to bottom, #77567A, #77567A); }
   .nav__ul {
     list-style: none;
     color: #646E68; }
     .nav__ul--item {
       display: inline-block;
-      padding: 1rem 2rem;
+      padding: .8rem 2rem;
       font-size: 2rem; }
 
-.btn, .btn:link, .btn:visited {
-  color: #646E68;
-  display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  border-radius: .1rem;
-  transition: transform 0.2s;
-  position: relative;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2); }
+.btn-solid {
+  background-color: #fff;
+  color: #000; }
+  .btn-solid, .btn-solid:link, .btn-solid:visited {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 4rem;
+    border-radius: 10rem;
+    transition: transform 0.2s;
+    position: relative;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer; }
+  .btn-solid:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn-solid:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn-solid:active, .btn-solid:focus {
+    outline: none;
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn-solid::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+    background-color: #fff; }
+  .btn-solid--animated {
+    animation-name: moveInBottom;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards; }
 
-.btn:hover {
-  transform: translateY(-0.2rem);
-  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0; }
-
-.btn:active, .btn:focus {
-  outline: none;
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+.btn {
+  color: #fff; }
+  .btn, .btn:link, .btn:visited {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 4rem;
+    transition: transform 0.2s;
+    font-size: 1.6rem;
+    cursor: pointer; }
+  .btn:hover {
+    color: #deaaff; }

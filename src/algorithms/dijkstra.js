@@ -50,8 +50,6 @@ const spDijkstra = (adj,startNode,destNode,n) => {
     }
   }
 
-  console.log(prev);
-
   let path = RetrievePath(startNode,destNode,prev);
     
   return [path,orderedVisited];

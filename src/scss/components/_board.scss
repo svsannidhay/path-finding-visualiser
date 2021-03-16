@@ -16,12 +16,10 @@
     height: $board-width/50 - .1rem;
     vertical-align: bottom;
     border-right: 1px solid $color-walls;
-    // border-bottom: 1px solid transparent;
     position: relative;
     &:first-child {
       border-left: 1px solid $color-walls;
     }
-    // transition: all .3s;
     &--front {
       width: $board-width/50;
       height: $board-width/50;
@@ -112,18 +110,19 @@
   &__visited {
     .visitedNode {
       animation-name: animateVisited;
-      animation-duration: 1s;
+      animation-duration: 1.2s;
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
       opacity: 1;
       // background-color: #EAC8CA;
-      background-color: #E39EC1;
+      // background-color: #E39EC1;
+      background-color: #f3c4fb;
     }
 
     &--startNode {
       .pathNode {
         animation-name: animateWalls;
-        animation-duration: .3s;
+        animation-duration: .5s;
         animation-timing-function: ease-out;
         animation-timing-function: cubic-bezier(.58, .01, .55, .99);
         opacity: 1;
@@ -142,7 +141,7 @@
     &--destNode {
       .pathNode {
         animation-name: animateWalls;
-        animation-duration: .3s;
+        animation-duration: .5s;
         animation-timing-function: ease-out;
         animation-timing-function: cubic-bezier(.58, .01, .55, .99);
         opacity: 1;
@@ -163,7 +162,7 @@
   &__path {
     .pathNode {
       animation-name: animateWalls;
-      animation-duration: .3s;
+      animation-duration: .4s;
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
       opacity: 1;
