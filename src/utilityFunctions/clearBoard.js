@@ -1,3 +1,4 @@
+import { toggleClassStartNode,toggleClassDestNode} from './toggleClasses';
 export const clearClasses = () => {
   for(let i = 0; i < 25; i++) {
     for(let j = 0;j < 50;j++) { 
@@ -21,5 +22,9 @@ export const newBoard = () => {
     }
     board.push(row);
   }    
+  board[5][15] = 1;
+  board[5][30] = 3;
+  toggleClassStartNode(5,15,'add');
+  toggleClassDestNode(5,30,'add');
   return board;
 }

@@ -9,6 +9,7 @@ class App extends React.Component {
     this.state = {
       isVisualizationStarted: false,
       clearBoard: false,
+      clearWalls: false
     };
   }
 
@@ -27,21 +28,44 @@ class App extends React.Component {
     this.setState({
       clearBoard: true
     });
-    console.log('Clear Board Initiated');
   }
 
   onClearBoardEnd = () => {
     this.setState({
       clearBoard: false
     });
-    console.log('Clear Board Ended');
+  }
+
+  onClearWallsStart = () => {
+    this.setState({
+      clearWalls: true
+    });
+    console.log('Clear Walls Initiated');
+  }
+
+  onClearWallsEnd = () => {
+    this.setState({
+      clearWalls: false
+    });
+    console.log('Clear Walls Ended');
   }
 
   render () {
     return (
       <div>
-        <Navigation onVisualizationStart = {this.onVisualizationStart} onClearBoardStart = {this.onClearBoardStart}/>
-        <Board isVisualizationStarted = {this.state.isVisualizationStarted} onVisualizationEnd = {this.onVisualizationEnd} clearBoard = {this.state.clearBoard} onClearBoardEnd = {this.onClearBoardEnd}/>
+        <Navigation 
+        onVisualizationStart = {this.onVisualizationStart} 
+        onClearBoardStart = {this.onClearBoardStart}
+        onClearWallsStart = {this.onClearWallsStart}
+        />
+        <Board 
+        isVisualizationStarted = {this.state.isVisualizationStarted} 
+        onVisualizationEnd = {this.onVisualizationEnd} 
+        clearBoard = {this.state.clearBoard} 
+        onClearBoardEnd = {this.onClearBoardEnd}
+        clearWalls = {this.state.clearWalls}
+        onClearWallsEnd = {this.onClearWallsEnd}
+        />
       </div>
     );
   };

@@ -8,6 +8,9 @@ import spDijkstra from '../../algorithms/dijkstra';
 import { graphNodeToGridNode } from '../../utilityFunctions/conversions';
 import { animateVisitedNodes,animatePathNodes }  from '../../utilityFunctions/animateNode';
 import { clearClasses, newBoard } from '../../utilityFunctions/clearBoard';
+import { toggleClassStartNode,toggleClassDestNode,toggleClassWallNode } from '../../utilityFunctions/toggleClasses';
+import { clearWalls } from '../../utilityFunctions/clearWalls';
+
 
 class Board extends React.Component {
 
@@ -56,6 +59,7 @@ class Board extends React.Component {
       board.push(row);
     }
     this.setState({nodes: board});
+    
   }
 
   animate = async (orderVisited,path,startNode,destNode) => {
@@ -64,6 +68,15 @@ class Board extends React.Component {
   }
 
   componentDidUpdate() {
+    // If there is not initial startNode or destination node create them
+    if(this.state.isStartNodeCreated === false) {
+      this.setState({
+        nodes: newBoard(),
+        isStartNodeCreated: true,
+        isDestNodeCreated: true
+      })
+    }
+    // When we start out visualisation
     if(this.props.isVisualizationStarted) {
 
       // Coverting grid to graph
@@ -84,37 +97,27 @@ class Board extends React.Component {
         orderVisited.push(gridNode);
       }
       // 3. Animate the return path and visited nodes
-      //Animate visited nodes
       this.animate(orderVisited,path,startNode,destNode);      
 
       this.props.onVisualizationEnd();
     }
-
+    // When user press clear board
     if(this.props.clearBoard) {
       clearClasses();
       this.setState({
         nodes: newBoard(),
-        isStartNodeCreated: false,
-        isDestNodeCreated: false
       });
       this.props.onClearBoardEnd();
     }
+    // When user press clear walls
+    if(this.props.clearWalls) {
+      this.setState({
+        nodes: clearWalls(this.state.nodes)
+      });
+      this.props.onClearWallsEnd();
+    }
   }
 
-  toggleClassStartNode = (x,y,toggle) => {
-    if(toggle === 'add')  document.getElementById(`${x}+${y}`).classList.add('board__startNode');
-    if(toggle === 'remove') document.getElementById(`${x}+${y}`).classList.remove('board__startNode');
-  }
-
-  toggleClassDestNode = (x,y,toggle) => {
-    if(toggle === 'add')  document.getElementById(`${x}+${y}`).classList.add('board__destNode');
-    if(toggle === 'remove') document.getElementById(`${x}+${y}`).classList.remove('board__destNode');
-  }
-
-  toggleClassWallNode = (x,y,toggle) => {
-    if(toggle === 'add')  document.getElementById(`${x}+${y}`).classList.add('board__wallNode');
-    if(toggle === 'remove') document.getElementById(`${x}+${y}`).classList.remove('board__wallNode');
-  }
 
 
   onButtonDown = (rowIndex,colIndex) => {
@@ -122,7 +125,7 @@ class Board extends React.Component {
     if(this.state.isStartNodeCreated === false) {
       const newNodes = this.createBoard();
       newNodes[rowIndex][colIndex] = 1;
-      this.toggleClassStartNode(rowIndex,colIndex,'add');
+      toggleClassStartNode(rowIndex,colIndex,'add');
       this.setState({
         isStartNodeCreated: true,
         nodes: newNodes
@@ -132,7 +135,7 @@ class Board extends React.Component {
     else if (this.state.isDestNodeCreated === false) {
       const newNodes = this.createBoard();
       newNodes[rowIndex][colIndex] = 3;
-      this.toggleClassDestNode(rowIndex,colIndex,'add');
+      toggleClassDestNode(rowIndex,colIndex,'add');
       this.setState({
         isDestNodeCreated: true,
         nodes: newNodes
@@ -163,7 +166,7 @@ class Board extends React.Component {
         if(this.state.nodes[rowIndex][colIndex] === 0) {
           const newNodes = this.createBoard();
           newNodes[rowIndex][colIndex] = 2;
-          this.toggleClassWallNode(rowIndex,colIndex,'add');
+          toggleClassWallNode(rowIndex,colIndex,'add');
           this.setState({
             nodes: newNodes
           });
@@ -172,7 +175,7 @@ class Board extends React.Component {
         else if(this.state.nodes[rowIndex][colIndex] === 2) {
           const newNodes = this.createBoard();
           newNodes[rowIndex][colIndex] = 0;
-          this.toggleClassWallNode(rowIndex,colIndex,'remove');
+          toggleClassWallNode(rowIndex,colIndex,'remove');
           this.setState({
             nodes: newNodes
           });
@@ -188,22 +191,22 @@ class Board extends React.Component {
     // If start Node is getting dragged make the current node start Node
     if(this.state.isStartNodeDragged === true && this.state.nodes[rowIndex][colIndex] !== 3) {
       if(this.state.nodes[rowIndex][colIndex] === 2) {
-        this.toggleClassWallNode(rowIndex,colIndex,'remove');
+        toggleClassWallNode(rowIndex,colIndex,'remove');
         this.setState({
           isWallRemovedByStart: true,
         });
       }
-      this.toggleClassStartNode(rowIndex,colIndex,'add');
+      toggleClassStartNode(rowIndex,colIndex,'add');
     }
     // If destination Node is gertting dragged make the current node dest Node
     if(this.state.isDestNodeDragged === true && this.state.nodes[rowIndex][colIndex] !== 1) {
       if(this.state.nodes[rowIndex][colIndex] === 2) {
-        this.toggleClassWallNode(rowIndex,colIndex,'remove');
+        toggleClassWallNode(rowIndex,colIndex,'remove');
         this.setState({
           isWallRemovedByDest: true,
         });
       }
-      this.toggleClassDestNode(rowIndex,colIndex,'add');
+      toggleClassDestNode(rowIndex,colIndex,'add');
     }
     // If we are building walls toggle the walls if its not a start or destination node
     if(this.state.areWeBuildingWalls === true && this.state.nodes[rowIndex][colIndex]!==1 && this.state.nodes[rowIndex][colIndex] !==3) {
@@ -211,7 +214,7 @@ class Board extends React.Component {
       if(this.state.nodes[rowIndex][colIndex] === 0) {
         const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 2;
-        this.toggleClassWallNode(rowIndex,colIndex,'add');
+        toggleClassWallNode(rowIndex,colIndex,'add');
         this.setState({
           nodes: newNodes
         });
@@ -220,7 +223,7 @@ class Board extends React.Component {
       else if(this.state.nodes[rowIndex][colIndex] === 2) {
         const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 0;
-        this.toggleClassWallNode(rowIndex,colIndex,'remove');
+        toggleClassWallNode(rowIndex,colIndex,'remove');
         this.setState({
           nodes: newNodes
         });
@@ -237,13 +240,13 @@ class Board extends React.Component {
       if(this.state.isWallRemovedByStart === true) {
         const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 2;
-        this.toggleClassWallNode(rowIndex,colIndex,'add');
+        toggleClassWallNode(rowIndex,colIndex,'add');
         this.setState({
           isWallRemovedByStart : false,
           nodes: newNodes
         });
       }
-      this.toggleClassStartNode(rowIndex,colIndex,'remove');
+      toggleClassStartNode(rowIndex,colIndex,'remove');
       this.setState({
         prevRowIndex: rowIndex,
         prevColIndex: colIndex
@@ -254,13 +257,13 @@ class Board extends React.Component {
       if(this.state.isWallRemovedByDest === true) {
         const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 2;
-        this.toggleClassWallNode(rowIndex,colIndex,'add');
+        toggleClassWallNode(rowIndex,colIndex,'add');
         this.setState({
           isWallRemovedByDest: false,
           nodes: newNodes
         });
       }
-      this.toggleClassDestNode(rowIndex,colIndex,'remove');
+      toggleClassDestNode(rowIndex,colIndex,'remove');
       this.setState({
         prevRowIndex: rowIndex,
         prevColIndex: colIndex
@@ -278,8 +281,8 @@ class Board extends React.Component {
         console.log(this.state.prevRowIndex,this.state.prevColIndex);
         newNodes[this.state.prevRowIndex][this.state.prevColIndex] = 1;
         console.log(newNodes);
-        this.toggleClassStartNode(rowIndex,colIndex,'remove');
-        this.toggleClassStartNode(this.state.prevRowIndex,this.state.prevColIndex,'add');
+        toggleClassStartNode(rowIndex,colIndex,'remove');
+        toggleClassStartNode(this.state.prevRowIndex,this.state.prevColIndex,'add');
         this.setState({
           isStartNodeDragged: false,
           nodes: newNodes
@@ -287,7 +290,7 @@ class Board extends React.Component {
       } else {
         // If its a wall node then first remove wall and add start there 
         if(this.state.nodes[rowIndex][colIndex] === 2) {
-          this.toggleClassWallNode(rowIndex,colIndex,'remove');
+          toggleClassWallNode(rowIndex,colIndex,'remove');
         }
         const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 1;
@@ -304,8 +307,8 @@ class Board extends React.Component {
       if(this.state.nodes[rowIndex][colIndex] === 1){
         const newNodes = this.createBoard();
         newNodes[this.state.prevRowIndex][this.state.prevColIndex] = 3;
-        this.toggleClassDestNode(rowIndex,colIndex,'remove');
-        this.toggleClassDestNode(this.state.prevRowIndex,this.state.prevColIndex,'add');
+        toggleClassDestNode(rowIndex,colIndex,'remove');
+        toggleClassDestNode(this.state.prevRowIndex,this.state.prevColIndex,'add');
         this.setState({
           isDestNodeDragged: false,
           nodes: newNodes
@@ -313,7 +316,7 @@ class Board extends React.Component {
       } else {
         // If its a wall node then first remove wall and add start there 
         if(this.state.nodes[rowIndex][colIndex] === 2) {
-          this.toggleClassWallNode(rowIndex,colIndex,'remove');
+          toggleClassWallNode(rowIndex,colIndex,'remove');
         }  
         const newNodes = this.createBoard();
         newNodes[rowIndex][colIndex] = 3;
@@ -334,6 +337,7 @@ class Board extends React.Component {
   
   
   render() {
+    console.log(this.state.nodes);
     return (
       <div className="board">
         {
