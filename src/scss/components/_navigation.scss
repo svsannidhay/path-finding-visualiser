@@ -2,14 +2,54 @@
   background-image: linear-gradient(to bottom,$color-purple-dark, $color-purple-dark);
   
   &__ul {
+    display: inline-block;
     list-style: none;
-    color: $color-nav-text;
     &--item {
       display: inline-block;
       padding: .8rem 2rem;
       font-size: 2rem;
     }
   }
-
+  &__dropdown {
+    padding: .8rem 2rem;
+    display: inline-block;
+    position: relative;
+    &--ul {
+      list-style: none;
+      position: absolute;
+      background-image: linear-gradient(to bottom, $color-purple-dark, $color-purple-dark);
+      margin-top: 1rem;
+      width: 135%;
+      border-radius: 2px;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: all .2s ease;
+      transform: translateY(-10px);
+      &--item {
+        display: inline-block;
+        padding: .8rem 2rem;
+        font-size: 2rem;
+      }
+    }
+    &--li {
+      text-align: center;
+    }
+    &--anchor:focus + &--ul {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    ion-icon {
+      display: inline-block;
+      position: absolute;
+      right: 3.4rem;
+      top: 2.5rem;
+    }
+  }
 }
+
+// .dropdown:focus + .nav__dropdown--ul {
+  
+// } 
 

@@ -68,3 +68,24 @@
     color: $color-pink;
   }
 }
+
+.btn-dropdown {
+  color: $color-white;
+  &,
+  &:link,
+  &:visited {
+    display: inline-block;
+    width:100%;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 4rem;
+    transition: transform 0.2s;
+    font-size: $default-font-size;
+    cursor: pointer;
+  }
+  &:hover {
+    color: $color-black;
+    background-color: $color-pink;
+  }
+}

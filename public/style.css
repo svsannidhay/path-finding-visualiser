@@ -279,12 +279,43 @@ body {
 .nav {
   background-image: linear-gradient(to bottom, #77567A, #77567A); }
   .nav__ul {
-    list-style: none;
-    color: #646E68; }
+    display: inline-block;
+    list-style: none; }
     .nav__ul--item {
       display: inline-block;
       padding: .8rem 2rem;
       font-size: 2rem; }
+  .nav__dropdown {
+    padding: .8rem 2rem;
+    display: inline-block;
+    position: relative; }
+    .nav__dropdown--ul {
+      list-style: none;
+      position: absolute;
+      background-image: linear-gradient(to bottom, #77567A, #77567A);
+      margin-top: 1rem;
+      width: 135%;
+      border-radius: 2px;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: all .2s ease;
+      transform: translateY(-10px); }
+      .nav__dropdown--ul--item {
+        display: inline-block;
+        padding: .8rem 2rem;
+        font-size: 2rem; }
+    .nav__dropdown--li {
+      text-align: center; }
+    .nav__dropdown--anchor:focus + .nav__dropdown--ul {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0); }
+    .nav__dropdown ion-icon {
+      display: inline-block;
+      position: absolute;
+      right: 3.4rem;
+      top: 2.5rem; }
 
 .btn-solid {
   background-color: #fff;
@@ -340,3 +371,19 @@ body {
     cursor: pointer; }
   .btn:hover {
     color: #deaaff; }
+
+.btn-dropdown {
+  color: #fff; }
+  .btn-dropdown, .btn-dropdown:link, .btn-dropdown:visited {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 4rem;
+    transition: transform 0.2s;
+    font-size: 1.6rem;
+    cursor: pointer; }
+  .btn-dropdown:hover {
+    color: #000;
+    background-color: #deaaff; }
