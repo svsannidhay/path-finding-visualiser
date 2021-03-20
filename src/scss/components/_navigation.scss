@@ -1,35 +1,37 @@
 .nav {
-  background-image: linear-gradient(to bottom,$color-purple-dark, $color-purple-dark);
+  background-image: linear-gradient(to right,$color-purple-light, $color-purple-light);
   
   &__ul {
     display: inline-block;
     list-style: none;
     &--item {
       display: inline-block;
-      padding: .8rem 2rem;
+      padding: 0 2rem;
       font-size: 2rem;
     }
   }
   &__dropdown {
-    padding: .8rem 2rem;
+    padding: 0 2rem;
     display: inline-block;
+    width: 25rem;
     position: relative;
+    text-align: center;
     &--ul {
       list-style: none;
       position: absolute;
-      background-image: linear-gradient(to bottom, $color-purple-dark, $color-purple-dark);
+      background-image: linear-gradient(to bottom, $color-white, $color-white);
+      box-shadow: rgba($color-purple-light, 0.38) 6px 2px 16px 0px,
+      rgba($color-purple-light, 0.5) -6px -2px 16px 0px;
       margin-top: 1rem;
-      width: 135%;
-      border-radius: 2px;
+      border-radius: 4px;
       z-index: 9999;
-      opacity: 0;
       pointer-events: none;
+      opacity: 0;
       transition: all .2s ease;
       transform: translateY(-10px);
       &--item {
         display: inline-block;
-        padding: .8rem 2rem;
-        font-size: 2rem;
+        padding: 0 2rem;
       }
     }
     &--li {
@@ -37,19 +39,18 @@
     }
     &--anchor:focus + &--ul {
       opacity: 1;
-      pointer-events: all;
+      pointer-events: all !important;
       transform: translateY(0);
     }
     ion-icon {
       display: inline-block;
       position: absolute;
-      right: 3.4rem;
-      top: 2.5rem;
+      right: 5.5rem;
+      top: 2.2rem;
     }
   }
 }
 
-// .dropdown:focus + .nav__dropdown--ul {
-  
-// } 
-
+a:focus {
+  pointer-events: auto;
+}

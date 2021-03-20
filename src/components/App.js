@@ -8,15 +8,20 @@ class App extends React.Component {
     super(props);
     this.state = {
       isVisualizationStarted: false,
+      algorithm: "",
       clearBoard: false,
       clearWalls: false
     };
   }
 
   onVisualizationStart = () => {
-    this.setState({
-      isVisualizationStarted: true
-    });
+    if(this.state.algorithm !== "") { 
+      this.setState({
+        isVisualizationStarted: true
+      });
+    } else {
+      alert("Abe algorithm toh select kr");
+    }
   }
   onVisualizationEnd = () => {
     this.setState({
@@ -50,6 +55,18 @@ class App extends React.Component {
     console.log('Clear Walls Ended');
   }
 
+  onAlgorithmSelect = (name) => {
+    this.setState({
+      algorithm: name
+    });
+  }
+
+  onAlgorithmDeSelect = () => {
+    this.setState({
+      algorithm: ""
+    });
+  }
+
   render () {
     return (
       <div>
@@ -57,6 +74,7 @@ class App extends React.Component {
         onVisualizationStart = {this.onVisualizationStart} 
         onClearBoardStart = {this.onClearBoardStart}
         onClearWallsStart = {this.onClearWallsStart}
+        onAlgorithmSelect = {this.onAlgorithmSelect}
         />
         <Board 
         isVisualizationStarted = {this.state.isVisualizationStarted} 
@@ -65,6 +83,8 @@ class App extends React.Component {
         onClearBoardEnd = {this.onClearBoardEnd}
         clearWalls = {this.state.clearWalls}
         onClearWallsEnd = {this.onClearWallsEnd}
+        algorithm = {this.state.algorithm}
+        onAlgorithmDeSelect = {this.onAlgorithmDeSelect}
         />
       </div>
     );

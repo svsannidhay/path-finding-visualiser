@@ -55,13 +55,18 @@
 @keyframes animateVisited {
   0% {
     opacity: 1;
-    transform: scale(0.35);
-    background-color: #c0fdff;
+    transform: scale(0.5);
+    background-color: #eaf2d7;
     border-radius: 50%; }
   1% {
-    opacity: 0;
-    transform: scale(0.45);
-    background-color: #c8e7ff;
+    opacity: 1;
+    transform: scale(0.35);
+    background-color: #f5efff;
+    border-radius: 50%; }
+  15% {
+    opacity: 1;
+    transform: scale(0.6);
+    background-color: #e5d9f2;
     border-radius: 50%; }
   25% {
     opacity: 1;
@@ -70,8 +75,11 @@
     border-radius: 50%; }
   50% {
     transform: scale(1.1);
-    background-color: #deaaff;
-    border-radius: 10px; }
+    background-color: #b8b8ff;
+    border-radius: 25%; }
+  75% {
+    transform: scale(1);
+    background-color: #efcfe3; }
   100% {
     transform: scale(1);
     border-radius: 5px; } }
@@ -87,7 +95,8 @@ html {
   font-size: 62.5%; }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: #f8f8f8; }
 
 body {
   font-family: 'Lato', sans-serif;
@@ -121,9 +130,9 @@ body {
     width: calc(3 *((100% - 3*6rem)/4) + 2*6rem); }
 
 .board {
-  padding: 10rem 0;
-  width: 140rem;
-  margin: 0 auto; }
+  background-color: #fff;
+  margin: 10rem auto;
+  width: 140rem; }
   .board [class^="board__row--"] {
     height: 2.8rem;
     border-bottom: 1px solid #C9C5CB; }
@@ -208,11 +217,11 @@ body {
     opacity: 1; }
   .board__visited .visitedNode {
     animation-name: animateVisited;
-    animation-duration: 1.2s;
+    animation-duration: 2s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;
-    background-color: #f3c4fb; }
+    background-color: #f7d6e0; }
   .board__visited--startNode .pathNode {
     animation-name: animateWalls;
     animation-duration: .5s;
@@ -224,7 +233,7 @@ body {
     -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
   .board__visited--startNode .startNode {
-    color: white;
+    color: #fff;
     z-index: 999; }
   .board__visited--destNode .pathNode {
     animation-name: animateWalls;
@@ -237,7 +246,7 @@ body {
     -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
   .board__visited--destNode .destNode {
-    color: white;
+    color: #fff;
     z-index: 999; }
   .board__path .pathNode {
     animation-name: animateWalls;
@@ -260,7 +269,7 @@ body {
     -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
   .board__path--startNode .startNode {
-    color: white;
+    color: #fff;
     z-index: 999; }
   .board__path--destNode .pathNode {
     animation-name: animateWalls;
@@ -273,53 +282,58 @@ body {
     -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
   .board__path--destNode .destNode {
-    color: white;
+    color: #fff;
     z-index: 999; }
 
 .nav {
-  background-image: linear-gradient(to bottom, #77567A, #77567A); }
+  background-image: linear-gradient(to right, #d0d1ff, #d0d1ff); }
   .nav__ul {
     display: inline-block;
     list-style: none; }
     .nav__ul--item {
       display: inline-block;
-      padding: .8rem 2rem;
+      padding: 0 2rem;
       font-size: 2rem; }
   .nav__dropdown {
-    padding: .8rem 2rem;
+    padding: 0 2rem;
     display: inline-block;
-    position: relative; }
+    width: 25rem;
+    position: relative;
+    text-align: center; }
     .nav__dropdown--ul {
       list-style: none;
       position: absolute;
-      background-image: linear-gradient(to bottom, #77567A, #77567A);
+      background-image: linear-gradient(to bottom, #fff, #fff);
+      box-shadow: rgba(208, 209, 255, 0.38) 6px 2px 16px 0px, rgba(208, 209, 255, 0.5) -6px -2px 16px 0px;
       margin-top: 1rem;
-      width: 135%;
-      border-radius: 2px;
+      border-radius: 4px;
       z-index: 9999;
-      opacity: 0;
       pointer-events: none;
+      opacity: 0;
       transition: all .2s ease;
       transform: translateY(-10px); }
       .nav__dropdown--ul--item {
         display: inline-block;
-        padding: .8rem 2rem;
-        font-size: 2rem; }
+        padding: 0 2rem; }
     .nav__dropdown--li {
       text-align: center; }
     .nav__dropdown--anchor:focus + .nav__dropdown--ul {
       opacity: 1;
-      pointer-events: all;
+      pointer-events: all !important;
       transform: translateY(0); }
     .nav__dropdown ion-icon {
       display: inline-block;
       position: absolute;
-      right: 3.4rem;
-      top: 2.5rem; }
+      right: 5.5rem;
+      top: 2.2rem; }
+
+a:focus {
+  pointer-events: auto; }
 
 .btn-solid {
   background-color: #fff;
-  color: #000; }
+  color: #303030;
+  font-weight: 400; }
   .btn-solid, .btn-solid:link, .btn-solid:visited {
     display: inline-block;
     text-transform: uppercase;
@@ -333,6 +347,7 @@ body {
     cursor: pointer; }
   .btn-solid:hover {
     transform: translateY(-0.2rem);
+    color: #d17691;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
     .btn-solid:hover::after {
       transform: scaleX(1.4) scaleY(1.6);
@@ -360,20 +375,26 @@ body {
     animation-fill-mode: backwards; }
 
 .btn {
-  color: #fff; }
+  color: #303030;
+  font-weight: 400;
+  opacity: 1; }
   .btn, .btn:link, .btn:visited {
     display: inline-block;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 4rem;
+    padding: 1.5rem 1rem;
+    margin: 0 3rem;
     transition: transform 0.2s;
     font-size: 1.6rem;
+    border-bottom: 3px solid transparent;
     cursor: pointer; }
   .btn:hover {
-    color: #deaaff; }
+    opacity: .8;
+    border-bottom: 3px solid #d17691; }
 
 .btn-dropdown {
-  color: #fff; }
+  color: #303030;
+  font-weight: 400; }
   .btn-dropdown, .btn-dropdown:link, .btn-dropdown:visited {
     display: inline-block;
     width: 100%;
@@ -382,8 +403,9 @@ body {
     text-decoration: none;
     padding: 1rem 4rem;
     transition: transform 0.2s;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     cursor: pointer; }
   .btn-dropdown:hover {
-    color: #000;
-    background-color: #deaaff; }
+    color: #303030;
+    opacity: .7;
+    background-color: rgba(214, 212, 212, 0.781); }

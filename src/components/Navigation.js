@@ -8,8 +8,8 @@ class Navigation extends React.Component {
           <div className="nav__dropdown">
             <a href="/#" className = "nav__dropdown--anchor btn">Algorithms <ion-icon name="caret-down-outline"></ion-icon> </a>
             <ul className = "nav__dropdown--ul" >
-              <li className = "nav__dropdown--li"><a href="/#" className = "nav__dropdown--ul--item btn-dropdown"> Dijkstra </a></li>
-              <li><a href="/#" className = "nav__dropdown--ul--item btn-dropdown"> Depth first Search</a></li>
+              <li className = "nav__dropdown--li"><a onClick = { () => this.props.onAlgorithmSelect('dijkstra') }href="/#" className = "nav__dropdown--ul--item btn-dropdown"> Dijkstra </a></li>
+              <li><a onClick = { () => this.props.onAlgorithmSelect('dfs') } href="/#" className = "nav__dropdown--ul--item btn-dropdown"> Depth first Search</a></li>
             </ul>
           </div>
           <ul className="nav__ul">

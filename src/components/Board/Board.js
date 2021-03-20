@@ -77,7 +77,7 @@ class Board extends React.Component {
       })
     }
     // When we start out visualisation
-    if(this.props.isVisualizationStarted) {
+    if(this.props.isVisualizationStarted && this.props.algorithm === "dijkstra") {
 
       // Coverting grid to graph
       let adj = gridToGraph(this.state.nodes);
@@ -100,6 +100,7 @@ class Board extends React.Component {
       this.animate(orderVisited,path,startNode,destNode);      
 
       this.props.onVisualizationEnd();
+      this.props.onAlgorithmDeSelect();
     }
     // When user press clear board
     if(this.props.clearBoard) {
@@ -337,7 +338,7 @@ class Board extends React.Component {
   
   
   render() {
-    console.log(this.state.nodes);
+    // console.log(this.state.nodes);
     return (
       <div className="board">
         {

@@ -79,26 +79,37 @@
 @keyframes animateVisited {
   0% {
     opacity: 1;
-    transform: scale(.35);
-    background-color: #c0fdff;
+    transform: scale(.5);
+    background-color:$color-flu-light;
     border-radius: 50%;
   }
   1% {
-    opacity: 0;
-    transform: scale(.45);
-    background-color: #c8e7ff;
+    opacity: 1;
+    transform: scale(.35);
+    background-color: $color-cream-purple-light;
     border-radius: 50%;
   }
+  15% {
+    opacity: 1;
+    transform: scale(.60);
+    background-color: $color-cream-purple-dark;
+    border-radius: 50%;
+  } 
   25% {
     opacity: 1;
     transform: scale(.75);
-    background-color: #d0d1ff;
+    background-color:$color-purple-light;
     border-radius: 50%;
   }
   50% {
     transform: scale(1.1);
-    background-color: $color-pink;
-    border-radius: 10px;
+    background-color: $color-purple-mild;
+    border-radius: 25%;
+  }
+  75% {
+    transform: scale(1);
+    background-color: $color-flu-pink;
+    
   }
   100% {
     transform: scale(1);
