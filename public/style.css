@@ -382,7 +382,7 @@ a:focus {
     display: inline-block;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 2rem;
     margin: 0 3rem;
     transition: transform 0.2s;
     font-size: 1.6rem;

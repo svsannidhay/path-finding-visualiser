@@ -5,6 +5,7 @@ import Node from './Node';
 import gridToGraph from '../../utilityFunctions/gridToGraph';
 import { findStartNode , findDestNode } from '../../utilityFunctions/findMarkers';
 import spDijkstra from '../../algorithms/dijkstra';
+import {depthFirstSearch} from '../../algorithms/depthFirstSearch';
 import { graphNodeToGridNode } from '../../utilityFunctions/conversions';
 import { animateVisitedNodes,animatePathNodes }  from '../../utilityFunctions/animateNode';
 import { clearClasses, newBoard } from '../../utilityFunctions/clearBoard';
@@ -76,7 +77,7 @@ class Board extends React.Component {
         isDestNodeCreated: true
       })
     }
-    // When we start out visualisation
+    // When we start out visualisation and selected algorithm is dijkstra
     if(this.props.isVisualizationStarted && this.props.algorithm === "dijkstra") {
 
       // Coverting grid to graph
@@ -102,6 +103,36 @@ class Board extends React.Component {
       this.props.onVisualizationEnd();
       this.props.onAlgorithmDeSelect();
     }
+
+    // When we start out visualisation and selected algorithm is dfs
+    if(this.props.isVisualizationStarted && this.props.algorithm === 'dfs') {
+
+      //Coverting grid to graph 
+      let adj = gridToGraph(this.state.nodes);
+      let startNode = findStartNode(this.state.nodes);
+      let destNode = findDestNode(this.state.nodes);
+
+      //Appyling dfs
+      let res = depthFirstSearch(adj,startNode,destNode,1251);
+      let path = [];
+      let orderVisited = [];
+      for(let i=0;i<res[0].length;i++) {
+        let gridNode = graphNodeToGridNode(res[0][i]);
+        path.push(gridNode);
+      }
+      for(let i=0;i<res[1].length;i++) {
+        let gridNode = graphNodeToGridNode(res[1][i]);
+        orderVisited.push(gridNode);
+      }
+      // 3. Animate the return path and visited nodes
+
+      this.animate(orderVisited,path,startNode,destNode);  
+
+      this.props.onVisualizationEnd();
+      this.props.onAlgorithmDeSelect();
+
+    }
+
     // When user press clear board
     if(this.props.clearBoard) {
       clearClasses();

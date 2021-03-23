@@ -1,20 +1,9 @@
 import PriorityQueue from 'js-priority-queue';
+import RetrievePath from '../utilityFunctions/retrievePath';
 
 var compareNumbers = function(a, b) { 
   return a[1] - b[1]; 
 };
-
-const RetrievePath = (startNode,destNode,prev) => {
-
-  let start = destNode;
-  let path = [];
-  path.push(destNode);
-  while(prev[start] !== -1) {
-    start = prev[start];
-    path.push(start);
-  }
-  return path.reverse();
-}
 
 const spDijkstra = (adj,startNode,destNode,n) => {
   let pq = new PriorityQueue({ comparator: compareNumbers });

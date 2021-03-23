@@ -5,7 +5,7 @@ export const animateVisitedNodes = (visited,startNode,destNode) => {
   return new Promise (
     (resolve,reject) => {
       let count = 0;
-      for (let i = 0;i < 15; i++) {
+      for (let i = 0;i < 5; i++) {
         let interval = setInterval( function(){
           if(count<visited.length) {
             if(visited[count][0] === gridStartNode[0] && visited[count][1] === gridStartNode[1]) {
