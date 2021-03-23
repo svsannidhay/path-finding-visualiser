@@ -29,7 +29,18 @@ class Node extends React.Component {
 
           </div>
           <div className = "pathNode">
-            
+            <div className = "pathNode__right">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </div>
+            <div className = "pathNode__left">
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </div>
+            <div className = "pathNode__down">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </div>
+            <div className = "pathNode__up">
+              <ion-icon name="chevron-up-outline"></ion-icon>
+            </div>
           </div>
         </div>
       </div>

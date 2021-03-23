@@ -84,6 +84,15 @@
     transform: scale(1);
     border-radius: 5px; } }
 
+@keyframes animatePath {
+  0% {
+    opacity: 1;
+    background-color: #d0d1ff; }
+  50% {
+    background-color: #b8b8ff; }
+  100% {
+    background-color: #77567A; } }
+
 *,
 *::after,
 *::before {
@@ -189,7 +198,29 @@ body {
       display: block;
       width: 100%;
       height: 100%;
-      opacity: 0; }
+      opacity: 0;
+      color: #fff; }
+      .board__node .pathNode__right {
+        position: absolute;
+        width: 100%;
+        height: 100%; }
+      .board__node .pathNode__left {
+        position: absolute;
+        width: 100%;
+        height: 100%; }
+      .board__node .pathNode__up {
+        position: absolute;
+        width: 100%;
+        height: 100%; }
+      .board__node .pathNode__down {
+        position: absolute;
+        width: 100%;
+        height: 100%; }
+      .board__node .pathNode ion-icon {
+        display: none;
+        opacity: 1;
+        width: 100%;
+        height: 100%; }
   .board__startNode {
     color: #646E68; }
     .board__startNode .startNode {
@@ -249,7 +280,7 @@ body {
     color: #fff;
     z-index: 999; }
   .board__path .pathNode {
-    animation-name: animateWalls;
+    animation-name: animatePath;
     animation-duration: .4s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
@@ -284,6 +315,14 @@ body {
   .board__path--destNode .destNode {
     color: #fff;
     z-index: 999; }
+  .board__path--right .pathNode__right ion-icon {
+    display: block; }
+  .board__path--left .pathNode__left ion-icon {
+    display: block; }
+  .board__path--up .pathNode__up ion-icon {
+    display: block; }
+  .board__path--down .pathNode__down ion-icon {
+    display: block; }
 
 .nav {
   background-image: linear-gradient(to right, #d0d1ff, #d0d1ff); }

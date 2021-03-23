@@ -72,6 +72,33 @@
       width:100%;
       height:100%;
       opacity: 0;
+      color: $color-white;
+      &__right {
+        position: absolute;
+        width:  100%;
+        height: 100%;
+      }
+      &__left {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      &__up {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      &__down {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      ion-icon {
+        display: none;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
   &__startNode{
@@ -161,7 +188,7 @@
   }
   &__path {
     .pathNode {
-      animation-name: animateWalls;
+      animation-name: animatePath;
       animation-duration: .4s;
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
@@ -206,7 +233,45 @@
         z-index: 999;
       }
     }
+
+    &--right {
+      .pathNode {
+        &__right{
+          ion-icon {
+            display: block;
+          }
+        }
+      }
+    }
+    &--left {
+      .pathNode {
+        &__left {
+          ion-icon {
+            display: block;
+          }
+        }
+      }
+    }
+    &--up {
+      .pathNode {
+        &__up {
+          ion-icon {
+            display: block;
+          }
+        }
+      }
+    }
+    &--down {
+      .pathNode {
+        &__down {
+          ion-icon {
+            display: block;
+          }
+        }
+      }
+    }
   }
+
 }
 
 

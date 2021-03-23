@@ -116,3 +116,20 @@
     border-radius: 5px;
   }
 }
+
+
+@keyframes animatePath {
+  0% {
+    opacity: 1;
+    background-color: $color-purple-light;
+  }
+
+  50% {
+    background-color: $color-purple-mild;
+  }
+
+  100% {
+    background-color: $color-purple-dark;
+
+  }
+}

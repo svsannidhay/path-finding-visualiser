@@ -9,6 +9,10 @@ export const clearClasses = () => {
       document.getElementById(`${i}+${j}`).classList.remove('board__visited--startNode');
       document.getElementById(`${i}+${j}`).classList.remove('board__visited--destNode');
       document.getElementById(`${i}+${j}`).classList.remove('board__path');
+      document.getElementById(`${i}+${j}`).classList.remove('board__path--right');
+      document.getElementById(`${i}+${j}`).classList.remove('board__path--left');
+      document.getElementById(`${i}+${j}`).classList.remove('board__path--up');
+      document.getElementById(`${i}+${j}`).classList.remove('board__path--down');
     }
   }    
 } 
