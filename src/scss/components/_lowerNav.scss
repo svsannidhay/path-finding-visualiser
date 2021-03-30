@@ -1,0 +1,72 @@
+.lowerNav {
+  background-color: $color-white;
+  padding: 1rem 5rem;
+  margin-bottom: 2rem;
+  &__item {
+    padding: 1rem 3rem;
+    position: relative;
+    float: left;
+
+    [class^="lowerNav__item--icon"] {
+      display: inline-block;
+      position: absolute;
+
+      ion-icon {
+        font-size: 250%;
+        padding: 0;
+      }
+
+      padding-right: 1rem;
+
+    }
+
+    &--icon-startNode {
+      ion-icon {
+        color: #646E68;
+      }
+    }
+
+    &--icon-destNode {
+      ion-icon {
+        color: #845EC2;
+      }
+    }
+
+    [class^="lowerNav__item--node"] {
+      position: absolute;
+      display: inline-block;
+      width: $board-width/50;
+      height: $board-width/50;
+      border: 1px solid $color-walls;
+      padding-right: 1rem;
+      margin-right: 2rem;
+
+    }
+
+    &--node-wall {
+      -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      background-color: $color-walls;
+    }
+
+    &--node-visited {
+      background-color: $color-pink-light;
+    }
+
+    &--node-path {
+      background-color: $color-purple-dark;
+      -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+    }
+
+    &--text {
+      padding-left: 4rem;
+      display: inline-block;
+      font-size: 150%;
+    }
+  }
+
+  @include clearfix;
+}

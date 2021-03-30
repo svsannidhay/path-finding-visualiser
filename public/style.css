@@ -113,10 +113,8 @@ body {
   line-height: 1.7; }
 
 .row {
-  max-width: 134rem;
+  max-width: 140rem;
   margin: 0 auto; }
-  .row:not(:last-child) {
-    margin-bottom: 8rem; }
   .row::after {
     content: "";
     display: table;
@@ -140,7 +138,7 @@ body {
 
 .board {
   background-color: #fff;
-  margin: 10rem auto;
+  margin: 0rem auto 10rem auto;
   width: 140rem; }
   .board [class^="board__row--"] {
     height: 2.8rem;
@@ -448,3 +446,51 @@ a:focus {
     color: #303030;
     opacity: .7;
     background-color: rgba(214, 212, 212, 0.781); }
+
+.lowerNav {
+  background-color: #fff;
+  padding: 1rem 5rem;
+  margin-bottom: 2rem; }
+  .lowerNav__item {
+    padding: 1rem 3rem;
+    position: relative;
+    float: left; }
+    .lowerNav__item [class^="lowerNav__item--icon"] {
+      display: inline-block;
+      position: absolute;
+      padding-right: 1rem; }
+      .lowerNav__item [class^="lowerNav__item--icon"] ion-icon {
+        font-size: 250%;
+        padding: 0; }
+    .lowerNav__item--icon-startNode ion-icon {
+      color: #646E68; }
+    .lowerNav__item--icon-destNode ion-icon {
+      color: #845EC2; }
+    .lowerNav__item [class^="lowerNav__item--node"] {
+      position: absolute;
+      display: inline-block;
+      width: 2.8rem;
+      height: 2.8rem;
+      border: 1px solid #C9C5CB;
+      padding-right: 1rem;
+      margin-right: 2rem; }
+    .lowerNav__item--node-wall {
+      -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      background-color: #C9C5CB; }
+    .lowerNav__item--node-visited {
+      background-color: #f7d6e0; }
+    .lowerNav__item--node-path {
+      background-color: #77567A;
+      -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
+      box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
+    .lowerNav__item--text {
+      padding-left: 4rem;
+      display: inline-block;
+      font-size: 150%; }
+  .lowerNav::after {
+    content: "";
+    display: table;
+    clear: both; }

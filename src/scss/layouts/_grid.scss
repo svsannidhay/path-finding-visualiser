@@ -3,7 +3,7 @@
   margin: 0 auto;
   
   &:not(:last-child) {
-    margin-bottom: $gutter-vertical;
+    // margin-bottom: $gutter-vertical;
   }
   @include clearfix;
 

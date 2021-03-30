@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board/Board';
+import LowerNav from './LowerNav';
 import Navigation from './Navigation'
 
 class App extends React.Component {
@@ -76,6 +77,7 @@ class App extends React.Component {
         onClearWallsStart = {this.onClearWallsStart}
         onAlgorithmSelect = {this.onAlgorithmSelect}
         />
+        <LowerNav></LowerNav>
         <Board 
         isVisualizationStarted = {this.state.isVisualizationStarted} 
         onVisualizationEnd = {this.onVisualizationEnd} 
