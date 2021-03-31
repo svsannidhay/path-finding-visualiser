@@ -30,6 +30,10 @@ const runDfs = (startNode,destNode) => {
 
 export const depthFirstSearch = (adjList,startNode,destNode,n) => {
   adj = adjList;
+  prev = [];
+  visited = [];
+  found = false;
+  orderedVisited = [];
   for(let i = 0;i <= n ;i++) {
     prev.push(-1);
     visited.push(0);
