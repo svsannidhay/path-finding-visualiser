@@ -1,6 +1,6 @@
 .nav {
-  background-image: linear-gradient(to right,$color-purple-light, $color-purple-light);
-  
+  background-image: linear-gradient(to right, #F7D488, #F7D488);
+  @include clearfix;
   &__ul {
     display: inline-block;
     list-style: none;
@@ -20,9 +20,8 @@
       list-style: none;
       position: absolute;
       background-image: linear-gradient(to bottom, $color-white, $color-white);
-      box-shadow: rgba($color-purple-light, 0.38) 6px 2px 16px 0px,
-      rgba($color-purple-light, 0.5) -6px -2px 16px 0px;
-      margin-top: 1rem;
+      box-shadow: rgba($color-golden-primary, 0.38) 6px 2px 16px 0px,
+      rgba(rgba($color-golden-primary, 0.38), 0.5) -6px -2px 16px 0px;
       border-radius: 4px;
       z-index: 9999;
       pointer-events: none;

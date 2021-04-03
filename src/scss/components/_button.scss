@@ -19,7 +19,7 @@
   &:hover{
     transform: translateY(-0.2rem);
     // background-color: $color-pink-dark;
-    color: $color-pink-dark;
+    color: $color-orange-primary;
     box-shadow: 0 1rem 2rem rgba($color-black-dark, .2);
 
     &::after {
@@ -73,7 +73,7 @@
   }
   &:hover {
     opacity: .8;
-    border-bottom: 3px solid $color-pink-dark;
+    border-bottom: 3px solid $color-orange-primary;
   }
 }
 

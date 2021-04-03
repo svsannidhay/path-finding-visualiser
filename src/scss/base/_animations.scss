@@ -78,10 +78,13 @@
 }
 @keyframes animateVisited {
   0% {
+    opacity: 0;
+  }
+  1% {
     opacity: 1;
     transform: scale(.5);
-    background-color:$color-flu-light;
-    border-radius: 50%;
+    background-color:$color-lemon-primary;
+    // border-radius: 50%;
   }
   // 1% {
   //   opacity: 1;
@@ -89,26 +92,16 @@
   //   background-color: $color-cream-purple-light;
   //   border-radius: 50%;
   // }
-  15% {
-    opacity: 1;
-    transform: scale(.60);
-    background-color: $color-cream-purple-dark;
-    border-radius: 50%;
-  } 
-  // 25% {
-  //   opacity: 1;
-  //   transform: scale(.75);
-  //   background-color:$color-purple-light;
+  // 15% {
+  //   transform: scale(.60);
+  //   background-color: $color-cream-purple-dark;
   //   border-radius: 50%;
-  // }
-  // 50% {
-  //   transform: scale(1.1);
-  //   background-color: $color-purple-mild;
-  //   border-radius: 25%;
-  // }
-  100% {
-    transform: scale(1);
-    border-radius: 5px;
+  // } 
+  25% {
+    opacity: 1;
+    // transform: scale(.75);
+    background-color: $color-golden-primary-faded;
+    // border-radius: 50%;
   }
 }
 
@@ -116,16 +109,7 @@
 @keyframes animatePath {
   0% {
     opacity: 1;
-    background-color: $color-purple-light;
-  }
-
-  50% {
-    background-color: $color-purple-mild;
-  }
-
-  100% {
-    background-color: $color-purple-dark;
-
+    background-color: $color-golden-primary-faded;
   }
 }
 
