@@ -1,5 +1,6 @@
 .nav {
   background-image: linear-gradient(to right, #F7D488, #F7D488);
+  text-align: center;
   @include clearfix;
   &__ul {
     display: inline-block;
@@ -13,7 +14,6 @@
   &__dropdown {
     padding: 0 2rem;
     display: inline-block;
-    width: 25rem;
     position: relative;
     text-align: center;
     &--ul {

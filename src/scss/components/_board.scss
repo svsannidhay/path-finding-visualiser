@@ -5,7 +5,7 @@
     border-bottom: 1px solid $color-walls;
     &:first-child {
       border-top:1px solid $color-walls;
-      height: 2.7rem;
+      height: 2.9rem;
     }
   }
   margin: 0rem auto 10rem auto;
@@ -110,11 +110,11 @@
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
       opacity: 1;
-            -webkit-transform: translateZ(0);
-            -moz-transform: translateZ(0);
-            -ms-transform: translateZ(0);
-            -o-transform: translateZ(0);
-            transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      transform: translateZ(0);
     } 
   }
   &__destNode {

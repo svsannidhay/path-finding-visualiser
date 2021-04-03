@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       isVisualizationStarted: false,
+      mazeAlgorithm: "",
       algorithm: "",
       clearBoard: false,
       clearWalls: false
@@ -68,6 +69,19 @@ class App extends React.Component {
     });
   }
 
+  onMazeAlgorithmSelect = (name) => {
+    console.log(name);
+    this.setState({
+      mazeAlgorithm: name
+    });
+  }
+
+  onMazeAlgorithmDeSelect = () => {
+    this.setState({
+      mazeAlgorithm: ""
+    });
+  }
+
   render () {
     return (
       <div>
@@ -76,6 +90,7 @@ class App extends React.Component {
         onClearBoardStart = {this.onClearBoardStart}
         onClearWallsStart = {this.onClearWallsStart}
         onAlgorithmSelect = {this.onAlgorithmSelect}
+        onMazeAlgorithmSelect = {this.onMazeAlgorithmSelect}
         />
         <LowerNav></LowerNav>
         <Board 
@@ -87,6 +102,8 @@ class App extends React.Component {
         onClearWallsEnd = {this.onClearWallsEnd}
         algorithm = {this.state.algorithm}
         onAlgorithmDeSelect = {this.onAlgorithmDeSelect}
+        mazeAlgorithm = {this.state.mazeAlgorithm} 
+        onMazeAlgorithmDeSelect = {this.onMazeAlgorithmDeSelect}
         />
       </div>
     );

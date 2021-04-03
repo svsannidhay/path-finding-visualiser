@@ -12,6 +12,7 @@ import { clearClasses, newBoard } from '../../utilityFunctions/clearBoard';
 import { toggleClassStartNode,toggleClassDestNode,toggleClassWallNode } from '../../utilityFunctions/toggleClasses';
 import { clearWalls } from '../../utilityFunctions/clearWalls';
 import { measureScreenSize,tellCols,tellRows } from '../../utilityFunctions/screensize';
+import recursiveBacktracker from '../../algorithms/recursiveBacktracking';
 
 class Board extends React.Component {
 
@@ -130,6 +131,29 @@ class Board extends React.Component {
       this.props.onVisualizationEnd();
       this.props.onAlgorithmDeSelect();
 
+    }
+
+    //When user select recursive backtracking
+    if(this.props.mazeAlgorithm === "recursiveBacktracker") {
+      // Make every node a wall 
+      let startNode = graphNodeToGridNode(findStartNode(this.state.nodes));
+      let destNode = graphNodeToGridNode(findDestNode(this.state.nodes));
+      console.log(startNode);
+      console.log(destNode);  
+      let newNodes = this.createBoard();
+      for(let i = 0;i<this.state.nodes.length;i++) {
+        for(let j = 0;j<this.state.nodes[i].length;j++) {
+          if( (i !== startNode[0] && j !== startNode[1]) && (i !== destNode[0] && j !==destNode[1]) ) {
+            toggleClassWallNode(i,j,'add');
+            newNodes[i][j] = 2;
+          }
+        }
+      }
+      this.setState({
+        nodes: newNodes
+      });
+      recursiveBacktracker(this.state.nodes);
+      this.props.onMazeAlgorithmDeSelect();
     }
 
     // When user press clear board

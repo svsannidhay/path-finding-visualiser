@@ -120,7 +120,7 @@ body {
     border-bottom: 1px solid #C9C5CB; }
     .board [class^="board__row--"]:first-child {
       border-top: 1px solid #C9C5CB;
-      height: 2.7rem; }
+      height: 2.9rem; }
   .board__node {
     display: inline-block;
     width: 2.8rem;
@@ -317,7 +317,8 @@ body {
     display: block; }
 
 .nav {
-  background-image: linear-gradient(to right, #F7D488, #F7D488); }
+  background-image: linear-gradient(to right, #F7D488, #F7D488);
+  text-align: center; }
   .nav::after {
     content: "";
     display: table;
@@ -332,7 +333,6 @@ body {
   .nav__dropdown {
     padding: 0 2rem;
     display: inline-block;
-    width: 25rem;
     position: relative;
     text-align: center; }
     .nav__dropdown--ul {
