@@ -5,7 +5,7 @@ export const animateVisitedNodes = (visited,startNode,destNode) => {
   return new Promise (
     (resolve,reject) => {
       let count = 0;
-      for (let i = 0;i < 5; i++) {
+      for (let i = 0;i < 15; i++) {
         let interval = setInterval( function(){
           if(count<visited.length) {
             if(visited[count][0] === gridStartNode[0] && visited[count][1] === gridStartNode[1]) {
@@ -21,7 +21,7 @@ export const animateVisitedNodes = (visited,startNode,destNode) => {
             clearInterval(interval);
             resolve();
           }
-        },30);
+        },50);
       }
     }
   );
@@ -34,32 +34,36 @@ export const animatePathNodes = (path,startNode,destNode) => {
   console.log(path);
   return new Promise (
     (resolve,reject) => {
-      let count = 0;
-      let interval = setInterval( function(){
-        if(count<path.length) {
-          if( (path[count][0] !== gridStartNode[0] || path[count][1] !== gridStartNode[1]) && (path[count][0] !== gridDestNode[0] || path[count][1] !== gridDestNode[1])) {
-              document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.remove('board__visited');
-              document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path');
-              if(path[count][0] === path[count + 1][0] && path[count][1] === path[count + 1][1] + 1) {
-                document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--left');
+
+      setTimeout( () => {
+        let count = 0;
+        let interval = setInterval( function(){
+          if(count<path.length) {
+            if( (path[count][0] !== gridStartNode[0] || path[count][1] !== gridStartNode[1]) && (path[count][0] !== gridDestNode[0] || path[count][1] !== gridDestNode[1])) {
+                document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.remove('board__visited');
+                document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path');
+                if(path[count][0] === path[count + 1][0] && path[count][1] === path[count + 1][1] + 1) {
+                  document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--left');
+                }
+                if(path[count][0] === path[count + 1][0] && path[count][1] === path[count + 1][1] - 1) {
+                  document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--right');
+                }
+                if(path[count][0] === path[count + 1][0] + 1 && path[count][1] === path[count + 1][1]) {
+                  document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--up');
+                }
+                if(path[count][0] === path[count + 1][0] - 1 && path[count][1] === path[count + 1][1]) {
+                  document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--down');
+                }
               }
-              if(path[count][0] === path[count + 1][0] && path[count][1] === path[count + 1][1] - 1) {
-                document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--right');
-              }
-              if(path[count][0] === path[count + 1][0] + 1 && path[count][1] === path[count + 1][1]) {
-                document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--up');
-              }
-              if(path[count][0] === path[count + 1][0] - 1 && path[count][1] === path[count + 1][1]) {
-                document.getElementById(`${path[count][0]}+${path[count][1]}`).classList.add('board__path--down');
-              }
-            }
-        }
-        count++;
-        if(count >= path.length) {
-          clearInterval(interval);
-          resolve();
-        }
-      },30);   
+          }
+          count++;
+          if(count >= path.length) {
+            clearInterval(interval);
+            resolve();
+          }
+        },30); 
+      },1700);
+      
     }  
   );
 }

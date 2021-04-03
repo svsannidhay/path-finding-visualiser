@@ -1,9 +1,10 @@
+import { tellCols,tellRows } from './screensize';
 export const findStartNode = (grid) => {
   let startNode = -1;
-  for(let i = 0;i < 25;i++) {
-    for(let j = 0;j<50;j++) {
+  for(let i = 0;i < tellRows(); i++) {
+    for(let j = 0;j < tellCols(); j++) {
       if(grid[i][j] === 1) {
-        startNode = (i * 50) + j;
+        startNode = (i * tellCols()) + j;
       }
     }
   }
@@ -12,10 +13,10 @@ export const findStartNode = (grid) => {
 
 export const findDestNode = (grid) => {
   let destNode = -1;
-  for(let i = 0;i < 25;i++) {
-    for(let j = 0;j<50;j++) {
+  for(let i = 0;i < tellRows(); i++) {
+    for(let j = 0;j < tellCols(); j++) {
       if(grid[i][j] === 3) {
-        destNode = (i * 50) + j;
+        destNode = (i * tellCols()) + j;
       }
     }
   }

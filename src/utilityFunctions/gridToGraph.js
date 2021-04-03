@@ -1,10 +1,12 @@
 import { gridNodeToGraphNode } from './conversions';
+import { tellCols,tellRows } from './screensize';
+
 
 const gridToGraph = (grid) => {
 
   let adj = [];
 
-  for(let i = 0;i < 1251 ; i++) {
+  for(let i = 0;i < tellCols() * tellRows() ; i++) {
     let row = [];
     adj.push(row);
   }
@@ -14,9 +16,9 @@ const gridToGraph = (grid) => {
     adj[u].push([v,1]);
   }
 
-  for(let i = 0; i < 25; i++) {
-    for(let j = 0;j < 50;j++) {
-      if(i !== 24) {
+  for(let i = 0; i < tellRows(); i++) {
+    for(let j = 0;j < tellCols();j++) {
+      if(i !== tellRows() -1 ) {
         if(grid[i][j] !== 2 && grid[i+1][j] !== 2) {
           // add Edge
           let u = gridNodeToGraphNode(i,j);
@@ -24,7 +26,7 @@ const gridToGraph = (grid) => {
           addEdge(u,v);
         } 
       }
-      if(j !== 49) {
+      if(j !== tellCols() - 1) {
         if(grid[i][j] !== 2 && grid[i][j+1] !== 2) {
           let u = gridNodeToGraphNode(i,j);
           let v = gridNodeToGraphNode(i,j+1);

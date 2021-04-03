@@ -1,19 +1,19 @@
 .board {
   background-color: $color-white;
   [class^="board__row--"] {
-    height: $board-width/50;
+    height: 2.8rem;
     border-bottom: 1px solid $color-walls;
     &:first-child {
       border-top:1px solid $color-walls;
-      height: $board-width/50 + .1rem;
+      height: 2.7rem;
     }
   }
   margin: 0rem auto 10rem auto;
-  width: $board-width;
+  width: 100%;
   &__node {
     display: inline-block;
-    width: $board-width/50;
-    height: $board-width/50 - .1rem;
+    width: 2.8rem;
+    height: 2.7rem;
     vertical-align: bottom;
     border-right: 1px solid $color-walls;
     position: relative;
@@ -21,8 +21,8 @@
       border-left: 1px solid $color-walls;
     }
     &--front {
-      width: $board-width/50;
-      height: $board-width/50;
+      width: 2.8rem;
+      height: 2.8rem;
     } 
     .startNode {
       position: absolute;
@@ -137,12 +137,10 @@
   &__visited {
     .visitedNode {
       animation-name: animateVisited;
-      animation-duration: 2s;
+      animation-duration: 1.7s;
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
       opacity: 1;
-      // background-color: #EAC8CA;
-      // background-color: #E39EC1;
       background-color: $color-pink-light;
     }
 

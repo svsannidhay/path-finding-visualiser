@@ -11,7 +11,7 @@ import { animateVisitedNodes,animatePathNodes }  from '../../utilityFunctions/an
 import { clearClasses, newBoard } from '../../utilityFunctions/clearBoard';
 import { toggleClassStartNode,toggleClassDestNode,toggleClassWallNode } from '../../utilityFunctions/toggleClasses';
 import { clearWalls } from '../../utilityFunctions/clearWalls';
-
+import { measureScreenSize,tellCols,tellRows } from '../../utilityFunctions/screensize';
 
 class Board extends React.Component {
 
@@ -33,28 +33,27 @@ class Board extends React.Component {
   //Create the board with the current state 
   createBoard = () => {
     const nodes = [];
-    for (let i=0; i<25; i++) {
+    for (let i=0; i< tellRows(); i++) {
       const row = [];
-      for (let j=0; j<50; j++) {
+      for (let j=0; j< tellCols(); j++) {
         row.push(0);
       }
       nodes.push(row);
     }
-    for (let i=0; i<25; i++) {
-      for (let j=0; j<50; j++) {
+    for (let i=0; i< tellRows(); i++) {
+      for (let j=0; j < tellCols(); j++) {
         nodes[i][j] = this.state.nodes[i][j];
       }
     }
     return nodes;
   }
 
-
-
   componentDidMount() {
+    measureScreenSize();
     const board = [];
-    for (let i=0; i<25; i++) {
+    for (let i=0; i< tellRows(); i++) {
       const row = [];
-      for (let j=0; j<50; j++) {
+      for (let j=0; j< tellCols(); j++) {
         row.push(0);
       }
       board.push(row);
@@ -86,7 +85,7 @@ class Board extends React.Component {
       let destNode = findDestNode(this.state.nodes);
 
       // Applying Dijkstra's algorithm
-      let dijkstra = spDijkstra(adj,startNode,destNode,1251);
+      let dijkstra = spDijkstra(adj,startNode,destNode,tellCols() * tellRows());
       let path = [];
       let orderVisited = [];
       for(let i=0;i<dijkstra[0].length;i++) {
@@ -113,7 +112,7 @@ class Board extends React.Component {
       let destNode = findDestNode(this.state.nodes);
 
       //Appyling dfs
-      let res = depthFirstSearch(adj,startNode,destNode,1251);
+      let res = depthFirstSearch(adj,startNode,destNode,tellCols() * tellRows());
       let path = [];
       let orderVisited = [];
       for(let i=0;i<res[0].length;i++) {
@@ -369,7 +368,6 @@ class Board extends React.Component {
   
   
   render() {
-    // console.log(this.state.nodes);
     return (
       <div className="board">
         {

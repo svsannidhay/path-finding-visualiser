@@ -58,28 +58,11 @@
     transform: scale(0.5);
     background-color: #eaf2d7;
     border-radius: 50%; }
-  1% {
-    opacity: 1;
-    transform: scale(0.35);
-    background-color: #f5efff;
-    border-radius: 50%; }
   15% {
     opacity: 1;
     transform: scale(0.6);
     background-color: #e5d9f2;
     border-radius: 50%; }
-  25% {
-    opacity: 1;
-    transform: scale(0.75);
-    background-color: #d0d1ff;
-    border-radius: 50%; }
-  50% {
-    transform: scale(1.1);
-    background-color: #b8b8ff;
-    border-radius: 25%; }
-  75% {
-    transform: scale(1);
-    background-color: #efcfe3; }
   100% {
     transform: scale(1);
     border-radius: 5px; } }
@@ -139,13 +122,13 @@ body {
 .board {
   background-color: #fff;
   margin: 0rem auto 10rem auto;
-  width: 140rem; }
+  width: 100%; }
   .board [class^="board__row--"] {
     height: 2.8rem;
     border-bottom: 1px solid #C9C5CB; }
     .board [class^="board__row--"]:first-child {
       border-top: 1px solid #C9C5CB;
-      height: 2.9rem; }
+      height: 2.7rem; }
   .board__node {
     display: inline-block;
     width: 2.8rem;
@@ -246,7 +229,7 @@ body {
     opacity: 1; }
   .board__visited .visitedNode {
     animation-name: animateVisited;
-    animation-duration: 2s;
+    animation-duration: 1.7s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;

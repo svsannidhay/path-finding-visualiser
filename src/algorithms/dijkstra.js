@@ -11,7 +11,7 @@ const spDijkstra = (adj,startNode,destNode,n) => {
   let dist = [];
   let prev = [];
   for(let i = 0;i <= n ;i++) {
-    dist.push(1000000000);
+    dist.push(100000);
     prev.push(-1);
   }
   

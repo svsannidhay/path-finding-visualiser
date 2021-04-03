@@ -83,34 +83,29 @@
     background-color:$color-flu-light;
     border-radius: 50%;
   }
-  1% {
-    opacity: 1;
-    transform: scale(.35);
-    background-color: $color-cream-purple-light;
-    border-radius: 50%;
-  }
+  // 1% {
+  //   opacity: 1;
+  //   transform: scale(.35);
+  //   background-color: $color-cream-purple-light;
+  //   border-radius: 50%;
+  // }
   15% {
     opacity: 1;
     transform: scale(.60);
     background-color: $color-cream-purple-dark;
     border-radius: 50%;
   } 
-  25% {
-    opacity: 1;
-    transform: scale(.75);
-    background-color:$color-purple-light;
-    border-radius: 50%;
-  }
-  50% {
-    transform: scale(1.1);
-    background-color: $color-purple-mild;
-    border-radius: 25%;
-  }
-  75% {
-    transform: scale(1);
-    background-color: $color-flu-pink;
-    
-  }
+  // 25% {
+  //   opacity: 1;
+  //   transform: scale(.75);
+  //   background-color:$color-purple-light;
+  //   border-radius: 50%;
+  // }
+  // 50% {
+  //   transform: scale(1.1);
+  //   background-color: $color-purple-mild;
+  //   border-radius: 25%;
+  // }
   100% {
     transform: scale(1);
     border-radius: 5px;

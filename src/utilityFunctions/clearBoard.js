@@ -1,7 +1,9 @@
 import { toggleClassStartNode,toggleClassDestNode} from './toggleClasses';
+import { tellCols,tellRows } from './screensize';
+
 export const clearClasses = () => {
-  for(let i = 0; i < 25; i++) {
-    for(let j = 0;j < 50;j++) { 
+  for(let i = 0; i < tellRows(); i++) {
+    for(let j = 0;j < tellCols();j++) { 
       document.getElementById(`${i}+${j}`).classList.remove('board__startNode');
       document.getElementById(`${i}+${j}`).classList.remove('board__destNode');
       document.getElementById(`${i}+${j}`).classList.remove('board__wallNode');
@@ -19,16 +21,18 @@ export const clearClasses = () => {
 
 export const newBoard = () => {
   const board = [];
-  for(let i = 0; i < 25; i++) {
+  for(let i = 0; i < tellRows(); i++) {
     let row = [];
-    for(let j = 0;j < 50;j++) { 
+    for(let j = 0;j < tellCols();j++) { 
       row.push(0);
     }
     board.push(row);
   }    
-  board[5][15] = 1;
-  board[5][30] = 3;
-  toggleClassStartNode(5,15,'add');
-  toggleClassDestNode(5,30,'add');
+  let x = Math.floor(tellRows()/2);
+  let y = Math.floor(tellCols()/2);
+  board[x][y-7] = 1;
+  board[x][y+7] = 3;
+  toggleClassStartNode(x,y-7,'add');
+  toggleClassDestNode(x,y+7,'add');
   return board;
 }

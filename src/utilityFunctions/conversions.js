@@ -1,9 +1,11 @@
+import { tellCols } from './screensize';
+
 export const gridNodeToGraphNode = (i,j) => {
-  return  ( (i * 50) + j );
+  return  ( (i * tellCols()) + j );
 }
 
 export const graphNodeToGridNode = (x) => {
-  let i = Math.floor(x/50);
-  let j = x - i * 50;
+  let i = Math.floor(x/tellCols());
+  let j = x - i * tellCols();
   return [i,j];
 }
