@@ -135,24 +135,12 @@ class Board extends React.Component {
 
     //When user select recursive backtracking
     if(this.props.mazeAlgorithm === "recursiveBacktracker") {
-      // Make every node a wall 
-      let startNode = graphNodeToGridNode(findStartNode(this.state.nodes));
-      let destNode = graphNodeToGridNode(findDestNode(this.state.nodes));
-      console.log(startNode);
-      console.log(destNode);  
-      let newNodes = this.createBoard();
-      for(let i = 0;i<this.state.nodes.length;i++) {
-        for(let j = 0;j<this.state.nodes[i].length;j++) {
-          if( (i !== startNode[0] && j !== startNode[1]) && (i !== destNode[0] && j !==destNode[1]) ) {
-            toggleClassWallNode(i,j,'add');
-            newNodes[i][j] = 2;
-          }
-        }
-      }
+      // Find the non wall nodes
+      let newNodes = recursiveBacktracker(this.state.nodes);
       this.setState({
         nodes: newNodes
       });
-      recursiveBacktracker(this.state.nodes);
+      // Turn rest of the nodes into walls 
       this.props.onMazeAlgorithmDeSelect();
     }
 

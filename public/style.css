@@ -201,12 +201,7 @@ body {
       animation-duration: .3s;
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
-      opacity: 1;
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      transform: translateZ(0); }
+      opacity: 1; }
   .board__destNode {
     color: #ffab73; }
     .board__destNode .destNode {
@@ -214,37 +209,20 @@ body {
       animation-duration: .3s;
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
-      opacity: 1;
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      transform: translateZ(0); }
+      opacity: 1; }
   .board__wallNode .wallNode {
     animation-name: animateWalls;
-    animation-duration: .2s;
+    animation-duration: .3s;
     animation-timing-function: ease-in-out;
-    -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
-    -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
-    opacity: 1;
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0); }
+    opacity: 1; }
   .board__visited .visitedNode {
     animation-name: animateVisited;
     animation-duration: 1.7s;
     animation-timing-function: ease-out;
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;
-    background-color: #f7d6e0;
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0); }
+    background-color: #f7d6e0; }
   .board__visited--startNode .pathNode {
     animation-name: animateWalls;
     animation-duration: .5s;
@@ -252,8 +230,6 @@ body {
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;
     background-color: #ffab73;
-    -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
-    -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
   .board__visited--startNode .startNode {
     color: #fff;
@@ -265,8 +241,6 @@ body {
     animation-timing-function: cubic-bezier(0.58, 0.01, 0.55, 0.99);
     opacity: 1;
     background-color: #ffab73;
-    -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
-    -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
     box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75); }
   .board__visited--destNode .destNode {
     color: #fff;

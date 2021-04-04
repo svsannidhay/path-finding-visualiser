@@ -110,11 +110,6 @@
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
       opacity: 1;
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      transform: translateZ(0);
     } 
   }
   &__destNode {
@@ -125,27 +120,15 @@
       animation-timing-function: ease-out;
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
       opacity: 1;
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      transform: translateZ(0);
     }
   }
   &__wallNode {
     .wallNode {
       animation-name: animateWalls;
-      animation-duration: .2s;
+      animation-duration: .3s;
       animation-timing-function: ease-in-out;
-      -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
-      -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
       box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
       opacity: 1;
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      transform: translateZ(0);
     }
   }
   &__visited {
@@ -156,11 +139,6 @@
       animation-timing-function: cubic-bezier(.58, .01, .55, .99);
       opacity: 1;
       background-color: $color-pink-light;
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      transform: translateZ(0);
     }
 
     &--startNode {
@@ -171,8 +149,6 @@
         animation-timing-function: cubic-bezier(.58, .01, .55, .99);
         opacity: 1;
         background-color: $color-orange-primary;
-        -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
-        -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
         box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
       }
 
@@ -190,8 +166,6 @@
         animation-timing-function: cubic-bezier(.58, .01, .55, .99);
         opacity: 1;
         background-color: $color-orange-primary;
-        -webkit-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
-        -moz-box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
         box-shadow: 4px 4px 14px 0px rgba(50, 50, 115, 0.75);
       }
 

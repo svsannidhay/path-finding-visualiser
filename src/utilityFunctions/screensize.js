@@ -8,5 +8,7 @@ export const tellCols = () => {
   return Math.floor(x/28);
 }
 export const tellRows = () => {
-  return Math.floor(y/28);
+  let val = Math.floor(y/28);
+  if(val % 2==0) val++;
+  return val;
 } 
