@@ -9,6 +9,6 @@ export const tellCols = () => {
 }
 export const tellRows = () => {
   let val = Math.floor(y/28);
-  if(val % 2==0) val++;
+  if(val % 2 === 0) val++;
   return val;
 } 

@@ -1,6 +1,7 @@
 import { toggleClassWallNode } from '../utilityFunctions/toggleClasses';
 import { findStartNode,findDestNode }   from '../utilityFunctions/findMarkers';
 import { graphNodeToGridNode } from '../utilityFunctions/conversions';
+import { animateWallNodes , animateWallNodesRemoval } from '../utilityFunctions/animateNode';
 
 const recursiveBacktracker = (grid) => {
   let startNode = graphNodeToGridNode(findStartNode(grid));
@@ -8,10 +9,12 @@ const recursiveBacktracker = (grid) => {
 
   let count = 0;
   let visited = [];
+  let animateWalls = [];
   for(let i=0;i<grid.length;i++) {
     let row = [];
     for(let j=0;j<grid[i].length;j++) {
       row.push(0);
+      animateWalls.push([i,j]);
     }
     visited.push(row);
   }
@@ -81,7 +84,6 @@ const recursiveBacktracker = (grid) => {
     }   
   }
 
-  console.log(clearNodes);
 
   for(let i=0;i<grid.length;i++) {
     for(let j=0;j<grid[0].length;j++) {
@@ -92,15 +94,15 @@ const recursiveBacktracker = (grid) => {
           break;
         }
       }
-      console.log(i,j,found);
       if(found === 0) {
         if(i === startNode[0] && j === startNode[1]) continue;
         if(i === destNode[0] && j=== destNode[1]) continue;
-        toggleClassWallNode(i,j,'add');
+        // toggleClassWallNode(i,j,'add');
         grid[i][j] = 2;
       }
     }
   }
+  animateWallNodes(animateWalls,findStartNode(grid),findDestNode(grid),clearNodes);
   return grid;
 }
 
