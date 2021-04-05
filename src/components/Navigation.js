@@ -17,10 +17,11 @@ class Navigation extends React.Component {
             <a href="/#" className = "nav__dropdown--anchor btn">Mazes <ion-icon name="caret-down-outline"></ion-icon> </a>
             <ul className = "nav__dropdown--ul" >
               <li className = "nav__dropdown--li"><a onClick = { () => this.props.onMazeAlgorithmSelect('recursiveBacktracker') }href="/#" className = "nav__dropdown--ul--item btn-dropdown">Recursive Backtracker </a></li>
+              <li className = "nav__dropdown--li"><a onClick = { () => this.props.onMazeAlgorithmSelect('reverseRecursiveBacktracker') }href="/#" className = "nav__dropdown--ul--item btn-dropdown">Reverse Recursive Backtracker </a></li>
             </ul>
           </div>
           <ul className="nav__ul">
-            <li className="nav__ul--item"> <a onClick = { () => this.props.onVisualizationStart() } href = "/#" className="btn-solid btn-solid--animated">Visulaize </a></li>
+            <li className="nav__ul--item"> <a onClick = { () => this.props.onVisualizationStart() } href = "/#" className="btn-solid btn-solid--animated">Visualise </a></li>
             <li className="nav__ul--item"> <a onClick = { () => this.props.onClearBoardStart()} href = "/#" className="btn">Clear Board</a></li>
             <li className="nav__ul--item"> <a onClick = { () => this.props.onClearWallsStart() } href = "/#" className="btn">Clear Walls</a></li>
           </ul>

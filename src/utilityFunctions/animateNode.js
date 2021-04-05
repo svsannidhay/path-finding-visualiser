@@ -2,6 +2,8 @@ import { graphNodeToGridNode } from './conversions';
 import { toggleClassWallNode } from './toggleClasses';
 
 
+
+// Recurive Backtracker visulaiser 
 const animateWallNodesRemoval = (visited) => {
   return new Promise (
     (resolve,reject) => {
@@ -51,6 +53,11 @@ export const animateWallNodes = (visited,startNode,destNode,clearWalls) => {
     }
   );
 }
+
+
+
+// Dijsktra and dfs visualiser
+
 
 export const animateVisitedNodes = (visited,startNode,destNode) => {
   let gridStartNode = graphNodeToGridNode(startNode);

@@ -1,12 +1,12 @@
-import { toggleClassWallNode } from '../utilityFunctions/toggleClasses';
 import { findStartNode,findDestNode }   from '../utilityFunctions/findMarkers';
 import { graphNodeToGridNode } from '../utilityFunctions/conversions';
-import { animateWallNodes , animateWallNodesRemoval } from '../utilityFunctions/animateNode';
+import { animateWallNodes } from '../utilityFunctions/animateNode';
 
-const recursiveBacktracker = (grid) => {
+const recursiveBacktracker = (grid,type) => {
   let startNode = graphNodeToGridNode(findStartNode(grid));
   let destNode = graphNodeToGridNode(findDestNode(grid));
 
+  // Base initialisations
   let count = 0;
   let visited = [];
   let animateWalls = [];
@@ -27,14 +27,15 @@ const recursiveBacktracker = (grid) => {
   let stack = [];
   let clearNodes = [];
   stack.push([1,1]);
+  // Running recursive backtracker
   while(cnt < count  && stack.length > 0) {
     let current;
     let ok = 0;
     let next = [];
     while(ok === 0 && stack.length > 0) {
       current = stack.pop();
-      // toggleClassWallNode(current[0],current[1],'add');
       clearNodes.push([current[0],current[1]]);
+      // checking if any path is not visited in any of the four directions
       if(current[0] + 2 < grid.length && visited[current[0] + 2][current[1]] === 0) {
         next.push([current[0] + 2,current[1]]);
       }
@@ -52,6 +53,7 @@ const recursiveBacktracker = (grid) => {
       }
     }
     if(next.length === 0) continue; 
+    // if all the possible moves are identified choose randomly which one to select
     let chooseRandom = Math.floor(Math.random() * (next.length));
     stack.push([current[0],current[1]]);
     visited[current[0]][current[1]] = 1;
@@ -59,50 +61,64 @@ const recursiveBacktracker = (grid) => {
     visited[next[chooseRandom][0]][next[chooseRandom][1]] = 1;
 
     if (next[chooseRandom][0] === current[0] + 2 && next[chooseRandom][1] === current[1]) {
-      // toggleClassWallNode(current[0] + 1,current[1],'add');
-      // toggleClassWallNode(current[0] + 2,current[1],'add');
       clearNodes.push( [current[0] + 1,current[1]] );
       clearNodes.push( [current[0] + 2,current[1]] );
     } 
     if(next[chooseRandom][0] === current[0] - 2 && next[chooseRandom][1] === current[1]) {
-      // toggleClassWallNode(current[0] - 1,current[1],'add');
-      // toggleClassWallNode(current[0] - 2,current[1],'add');
       clearNodes.push( [current[0] - 1,current[1]] );
       clearNodes.push( [current[0] - 2,current[1]] );
     } 
     if(next[chooseRandom][0]=== current[0] && next[chooseRandom][1] === current[1] + 2) {
-      // toggleClassWallNode(current[0],current[1] + 1,'add');
-      // toggleClassWallNode(current[0],current[1] + 2,'add');
       clearNodes.push( [current[0],current[1] + 1] );
       clearNodes.push( [current[0],current[1] + 2] );
     } 
     if(next[chooseRandom][0]=== current[0] && next[chooseRandom][1] === current[1] - 2) {
-      // toggleClassWallNode(current[0],current[1] - 1,'add');
-      // toggleClassWallNode(current[0],current[1] - 2,'add');
       clearNodes.push( [current[0],current[1] - 1] );
       clearNodes.push( [current[0],current[1] - 2] );
     }   
   }
-
-
-  for(let i=0;i<grid.length;i++) {
-    for(let j=0;j<grid[0].length;j++) {
-      let found = 0;
-      for(let k=0;k<clearNodes.length;k++) {
-        if(clearNodes[k][0] === i && clearNodes[k][1] === j) {
-          found = 1;
-          break;
+  // visualisation
+  if(type === 'recursiveBacktracker'){
+    for(let i=0;i<grid.length;i++) {
+      for(let j=0;j<grid[0].length;j++) {
+        let found = 0;
+        for(let k=0;k<clearNodes.length;k++) {
+          if(clearNodes[k][0] === i && clearNodes[k][1] === j) {
+            found = 1;
+            break;
+          }
+        }
+        if(found === 0) {
+          if(i === startNode[0] && j === startNode[1]) continue;
+          if(i === destNode[0] && j=== destNode[1]) continue;
+          grid[i][j] = 2;
         }
       }
-      if(found === 0) {
-        if(i === startNode[0] && j === startNode[1]) continue;
-        if(i === destNode[0] && j=== destNode[1]) continue;
-        // toggleClassWallNode(i,j,'add');
-        grid[i][j] = 2;
+    }
+    animateWallNodes(animateWalls,findStartNode(grid),findDestNode(grid),clearNodes);
+  } else if(type === 'reverseRecursiveBacktracker') {
+    // walls will be opened and opened cells will we closed.
+    let clearWalls = [];
+    for(let i=0;i<grid.length;i++) {
+      for(let j=0;j<grid[0].length;j++) {
+        let found = 0;
+        for(let k=0;k<clearNodes.length;k++) {
+          if(clearNodes[k][0] === i && clearNodes[k][1] === j) {
+            found = 1;
+            break;
+          }
+        }
+        if(found === 0) {
+          clearWalls.push([i,j]);
+        } else {
+          if(i === startNode[0] && j === startNode[1]) continue;
+          if(i === destNode[0] && j=== destNode[1]) continue;
+          grid[i][j] = 2;
+        }
       }
     }
+    animateWallNodes(animateWalls,findStartNode(grid),findDestNode(grid),clearWalls);
   }
-  animateWallNodes(animateWalls,findStartNode(grid),findDestNode(grid),clearNodes);
   return grid;
 }
 
