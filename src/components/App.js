@@ -1,7 +1,8 @@
 import React from 'react';
 import Board from './Board/Board';
 import LowerNav from './LowerNav';
-import Navigation from './Navigation'
+import Navigation from './Navigation';
+import Footer from './Footer';
 
 class App extends React.Component {
 
@@ -105,6 +106,7 @@ class App extends React.Component {
         mazeAlgorithm = {this.state.mazeAlgorithm} 
         onMazeAlgorithmDeSelect = {this.onMazeAlgorithmDeSelect}
         />
+        <Footer></Footer>
       </div>
     );
   };

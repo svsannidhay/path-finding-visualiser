@@ -1,0 +1,110 @@
+.footer {
+  background-image: linear-gradient(to right,$color-grey-dark,$color-grey-dark);
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  color: $color-grey-light-1;
+  font-size: 1.4rem;
+
+  &__branding {
+    position: relative;
+  }
+
+  &__logo-box {
+    display: inline-block;
+  }
+
+  &__logo {
+    width: 10rem;
+    height: 8rem;
+    padding: .5rem;
+  }
+
+  &__text {
+    vertical-align: center;
+    display: inline-block;
+    padding-left: 3rem;
+  }
+
+  &__heading {
+    text-transform: uppercase;
+    backface-visibility: hidden;
+
+    &--main {
+
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 400;
+      letter-spacing: 1.4rem;
+      animation-name: moveInLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-in;
+
+    }
+
+    &--sub {
+      color: $color-orange-primary;
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1.2rem;
+      animation-name: moveInRight;
+      animation-duration: 1s;
+      animation-timing-function: ease-in;
+    }
+  }
+
+  &__navigation {
+    border-top: 1px solid $color-grey-light;
+    padding-top: 2rem;
+    text-align: center;
+  }
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  &__link {
+
+    &:link,
+    &:visited {
+      color: inherit;
+      background-color: 
+      $color-grey-dark;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all .2s;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-golden-primary;
+      box-shadow: 0 1rem 2rem rgba(#000, .4);
+      transform: rotate(5deg) scale(1.3);
+    }
+
+    ion-icon {
+      padding: 0 3rem;
+    }
+  }
+
+  &__copyright-box {
+    text-align: center;
+  }
+
+  &__copyright {
+    color: rgb(145, 145, 145);
+    border-top: 1px solid $color-grey-dark;
+    padding-top: 1rem;
+    width: 80%;
+  }
+
+}

@@ -110,7 +110,7 @@ body {
 
 .board {
   background-color: #fff;
-  margin: 0rem auto 10rem auto;
+  margin: 0rem auto 2.5rem auto;
   width: 100%; }
   .board [class^="board__row--"] {
     height: 2.8rem;
@@ -413,7 +413,7 @@ a:focus {
   .btn-dropdown:hover {
     color: #303030;
     opacity: .7;
-    background-color: rgba(214, 212, 212, 0.781); }
+    background-color: #777; }
 
 .lowerNav {
   background-color: #fff;
@@ -502,3 +502,73 @@ a:focus {
     content: "";
     display: table;
     clear: both; }
+
+.footer {
+  background-image: linear-gradient(to right, #333, #333);
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  color: #f7f7f7;
+  font-size: 1.4rem; }
+  .footer__branding {
+    position: relative; }
+  .footer__logo-box {
+    display: inline-block; }
+  .footer__logo {
+    width: 10rem;
+    height: 8rem;
+    padding: .5rem; }
+  .footer__text {
+    vertical-align: center;
+    display: inline-block;
+    padding-left: 3rem; }
+  .footer__heading {
+    text-transform: uppercase;
+    backface-visibility: hidden; }
+    .footer__heading--main {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 400;
+      letter-spacing: 1.4rem;
+      animation-name: moveInLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-in; }
+    .footer__heading--sub {
+      color: #ffab73;
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1.2rem;
+      animation-name: moveInRight;
+      animation-duration: 1s;
+      animation-timing-function: ease-in; }
+  .footer__navigation {
+    border-top: 1px solid #777;
+    padding-top: 2rem;
+    text-align: center; }
+  .footer__item {
+    display: inline-block; }
+    .footer__item:not(:last-child) {
+      margin-right: 1.5rem; }
+  .footer__list {
+    list-style: none;
+    margin-bottom: 2rem; }
+  .footer__link:link, .footer__link:visited {
+    color: inherit;
+    background-color: #333;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all .2s; }
+  .footer__link:hover, .footer__link:active {
+    color: #F7D488;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg) scale(1.3); }
+  .footer__link ion-icon {
+    padding: 0 3rem; }
+  .footer__copyright-box {
+    text-align: center; }
+  .footer__copyright {
+    color: #919191;
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    width: 80%; }
