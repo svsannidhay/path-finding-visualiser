@@ -55,9 +55,11 @@
   1% {
     opacity: 1;
     transform: scale(0.5);
+    border-radius: 50%;
     background-color: #fff9b0; }
   25% {
     opacity: 1;
+    border-radius: 10px;
     background-color: #EAEFB1; } }
 
 @keyframes animatePath {
@@ -414,6 +416,12 @@ a:focus {
     color: #303030;
     opacity: .7;
     background-color: #777; }
+
+.btn-faint:link, .btn-faint:visited {
+  opacity: .2; }
+
+.btn-faint:hover {
+  opacity: .2; }
 
 .lowerNav {
   background-color: #fff;

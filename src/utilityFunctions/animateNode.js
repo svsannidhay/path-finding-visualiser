@@ -4,11 +4,13 @@ import { toggleClassWallNode } from './toggleClasses';
 
 
 // Recurive Backtracker visulaiser 
-const animateWallNodesRemoval = (visited) => {
+//First convert all the cells into walls then clear the ones not required
+
+export const animateWallNodesRemoval = (visited) => {
   return new Promise (
     (resolve,reject) => {
       let count = 0;
-      for (let i = 0;i < 15; i++) {
+      for (let i = 0;i < 10; i++) {
         let interval = setInterval( function(){
           if(count<visited.length) {
               toggleClassWallNode(visited[count][0],visited[count][1],'remove');
@@ -24,13 +26,13 @@ const animateWallNodesRemoval = (visited) => {
   );
 }
 
-export const animateWallNodes = (visited,startNode,destNode,clearWalls) => {
+export const animateWallNodes = async (visited,startNode,destNode,clearWalls) => {
   let gridStartNode = graphNodeToGridNode(startNode);
   let gridDestNode = graphNodeToGridNode(destNode);
   return new Promise (
     (resolve,reject) => {
       let count = 0;
-      for (let i = 0;i < 15; i++) {
+      for (let i = 0;i < 3; i++) {
         let interval = setInterval( function(){
           if(count<visited.length) {
             if(visited[count][0] === gridStartNode[0] && visited[count][1] === gridStartNode[1]) {
@@ -40,15 +42,13 @@ export const animateWallNodes = (visited,startNode,destNode,clearWalls) => {
             } else {
               toggleClassWallNode(visited[count][0],visited[count][1],'add');
             }
-            // document.getElementById(`${visited[count][0]}+${visited[count][1]}`).classList.add('board__visited');
           }
           count++;
           if(count >= visited.length) {
             clearInterval(interval);
-            animateWallNodesRemoval(clearWalls);
             resolve();
           }
-        },30);
+        },50);
       }
     }
   );
@@ -65,7 +65,7 @@ export const animateVisitedNodes = (visited,startNode,destNode) => {
   return new Promise (
     (resolve,reject) => {
       let count = 0;
-      for (let i = 0;i < 15; i++) {
+      for (let i = 0;i < 30; i++) {
         let interval = setInterval( function(){
           if(count<visited.length) {
             if(visited[count][0] === gridStartNode[0] && visited[count][1] === gridStartNode[1]) {
@@ -81,7 +81,7 @@ export const animateVisitedNodes = (visited,startNode,destNode) => {
             clearInterval(interval);
             resolve();
           }
-        },50);
+        },200);
       }
     }
   );
@@ -91,7 +91,6 @@ export const animateVisitedNodes = (visited,startNode,destNode) => {
 export const animatePathNodes = (path,startNode,destNode) => {
   let gridStartNode = graphNodeToGridNode(startNode);
   let gridDestNode = graphNodeToGridNode(destNode);
-  console.log(path);
   return new Promise (
     (resolve,reject) => {
 

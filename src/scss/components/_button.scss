@@ -99,3 +99,13 @@
     background-color: $color-grey-light;
   }
 }
+
+.btn-faint {
+    &:link,
+    &:visited {
+      opacity: .2;    
+    }
+    &:hover {
+      opacity: .2;
+    }
+}

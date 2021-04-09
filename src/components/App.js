@@ -13,12 +13,13 @@ class App extends React.Component {
       mazeAlgorithm: "",
       algorithm: "",
       clearBoard: false,
-      clearWalls: false
+      clearWalls: false,
+      navigationOff: false,
     };
   }
 
   onVisualizationStart = () => {
-    if(this.state.algorithm !== "") { 
+    if(this.state.algorithm !== "" && this.state.navigationOff === false) { 
       this.setState({
         isVisualizationStarted: true
       });
@@ -33,9 +34,11 @@ class App extends React.Component {
   }
 
   onClearBoardStart = () => {
-    this.setState({
-      clearBoard: true
-    });
+    if(this.state.navigationOff === false) {
+      this.setState({
+        clearBoard: true
+      });
+    }  
   }
 
   onClearBoardEnd = () => {
@@ -45,17 +48,17 @@ class App extends React.Component {
   }
 
   onClearWallsStart = () => {
-    this.setState({
-      clearWalls: true
-    });
-    console.log('Clear Walls Initiated');
+    if(this.state.navigationOff == false) {
+      this.setState({
+        clearWalls: true
+      });
+    }
   }
 
   onClearWallsEnd = () => {
     this.setState({
       clearWalls: false
     });
-    console.log('Clear Walls Ended');
   }
 
   onAlgorithmSelect = (name) => {
@@ -71,15 +74,28 @@ class App extends React.Component {
   }
 
   onMazeAlgorithmSelect = (name) => {
-    console.log(name);
-    this.setState({
-      mazeAlgorithm: name
-    });
+    if(this.state.navigationOff === false) {
+      this.setState({
+        mazeAlgorithm: name
+      });
+    }
   }
 
   onMazeAlgorithmDeSelect = () => {
     this.setState({
       mazeAlgorithm: ""
+    });
+  }
+
+  deactivateButtons = () => {
+    this.setState({
+      navigationOff: true
+    });
+  }
+
+  activateButtons = () => {
+    this.setState({
+      navigationOff: false
     });
   }
 
@@ -92,6 +108,7 @@ class App extends React.Component {
         onClearWallsStart = {this.onClearWallsStart}
         onAlgorithmSelect = {this.onAlgorithmSelect}
         onMazeAlgorithmSelect = {this.onMazeAlgorithmSelect}
+        navigationOff = {this.state.navigationOff}
         />
         <LowerNav></LowerNav>
         <Board 
@@ -105,6 +122,8 @@ class App extends React.Component {
         onAlgorithmDeSelect = {this.onAlgorithmDeSelect}
         mazeAlgorithm = {this.state.mazeAlgorithm} 
         onMazeAlgorithmDeSelect = {this.onMazeAlgorithmDeSelect}
+        deactivateButtons = {this.deactivateButtons}
+        activateButtons = {this.activateButtons}
         />
         <Footer></Footer>
       </div>

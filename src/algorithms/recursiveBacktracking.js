@@ -78,6 +78,7 @@ const recursiveBacktracker = (grid,type) => {
     }   
   }
   // visualisation
+  let clearWalls = [];
   if(type === 'recursiveBacktracker'){
     for(let i=0;i<grid.length;i++) {
       for(let j=0;j<grid[0].length;j++) {
@@ -95,10 +96,10 @@ const recursiveBacktracker = (grid,type) => {
         }
       }
     }
-    animateWallNodes(animateWalls,findStartNode(grid),findDestNode(grid),clearNodes);
+    clearWalls = clearNodes;
+    // animateWallNodes(animateWalls,findStartNode(grid),findDestNode(grid),clearNodes);
   } else if(type === 'reverseRecursiveBacktracker') {
     // walls will be opened and opened cells will we closed.
-    let clearWalls = [];
     for(let i=0;i<grid.length;i++) {
       for(let j=0;j<grid[0].length;j++) {
         let found = 0;
@@ -117,9 +118,9 @@ const recursiveBacktracker = (grid,type) => {
         }
       }
     }
-    animateWallNodes(animateWalls,findStartNode(grid),findDestNode(grid),clearWalls);
+    // animateWallNodes(animateWalls,findStartNode(grid),findDestNode(grid),clearWalls);
   }
-  return grid;
+  return [grid,animateWalls,clearWalls];
 }
 
 export default recursiveBacktracker;

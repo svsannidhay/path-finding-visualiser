@@ -7,7 +7,7 @@ import { findStartNode , findDestNode } from '../../utilityFunctions/findMarkers
 import spDijkstra from '../../algorithms/dijkstra';
 import {depthFirstSearch} from '../../algorithms/depthFirstSearch';
 import { graphNodeToGridNode } from '../../utilityFunctions/conversions';
-import { animateVisitedNodes,animatePathNodes }  from '../../utilityFunctions/animateNode';
+import { animateVisitedNodes,animatePathNodes,animateWallNodes,animateWallNodesRemoval }  from '../../utilityFunctions/animateNode';
 import { clearClasses, newBoard } from '../../utilityFunctions/clearBoard';
 import { toggleClassStartNode,toggleClassDestNode,toggleClassWallNode } from '../../utilityFunctions/toggleClasses';
 import { clearWalls } from '../../utilityFunctions/clearWalls';
@@ -63,9 +63,19 @@ class Board extends React.Component {
     
   }
 
-  animate = async (orderVisited,path,startNode,destNode) => {
-    await animateVisitedNodes(orderVisited,startNode,destNode);
-    await animatePathNodes(path,startNode,destNode);
+  animate = async (orderVisited,path,startNode,destNode,type) => {
+    this.props.deactivateButtons();
+    if(type === 'dijkstra' || type === 'dfs') {
+      await animateVisitedNodes(orderVisited,startNode,destNode);
+      await animatePathNodes(path,startNode,destNode);
+    } else if(type === 'recursiveBacktracker') {
+      let animateWalls = orderVisited;
+      let clearWalls = path;
+      await animateWallNodes(animateWalls,startNode,destNode,clearWalls);
+      await animateWallNodesRemoval(clearWalls);
+    }
+    this.props.activateButtons();
+    console.log('completed now its fine');
   }
 
   componentDidUpdate() {
@@ -98,10 +108,11 @@ class Board extends React.Component {
         orderVisited.push(gridNode);
       }
       // 3. Animate the return path and visited nodes
-      this.animate(orderVisited,path,startNode,destNode);      
+      this.animate(orderVisited,path,startNode,destNode,'dijkstra');      
 
       this.props.onVisualizationEnd();
       this.props.onAlgorithmDeSelect();
+
     }
 
     // When we start out visualisation and selected algorithm is dfs
@@ -126,7 +137,7 @@ class Board extends React.Component {
       }
       // 3. Animate the return path and visited nodes
 
-      this.animate(orderVisited,path,startNode,destNode);  
+      this.animate(orderVisited,path,startNode,destNode,'dfs');  
 
       this.props.onVisualizationEnd();
       this.props.onAlgorithmDeSelect();
@@ -135,21 +146,25 @@ class Board extends React.Component {
 
     //When user select recursive backtracking
     if(this.props.mazeAlgorithm === "recursiveBacktracker") {
-      // Find the non wall nodes
-      let newNodes = recursiveBacktracker(this.state.nodes,'recursiveBacktracker');
+      let rb =  recursiveBacktracker(this.state.nodes,'recursiveBacktracker');
+      let newNodes = rb[0];
+      let animateWalls = rb[1];
+      let clearWalls = rb[2];
       this.setState({
         nodes: newNodes
       });
-      // Turn rest of the nodes into walls 
+      this.animate(animateWalls,clearWalls,findStartNode(newNodes),findDestNode(newNodes),'recursiveBacktracker');
       this.props.onMazeAlgorithmDeSelect();
     }
     if(this.props.mazeAlgorithm === "reverseRecursiveBacktracker") {
-      // Find the non wall nodes
-      let newNodes = recursiveBacktracker(this.state.nodes,'reverseRecursiveBacktracker');
+      let rb =  recursiveBacktracker(this.state.nodes,'reverseRecursiveBacktracker');
+      let newNodes = rb[0];
+      let animateWalls = rb[1];
+      let clearWalls = rb[2];
       this.setState({
         nodes: newNodes
       });
-      // Turn rest of the nodes into walls 
+      this.animate(animateWalls,clearWalls,findStartNode(newNodes),findDestNode(newNodes),'recursiveBacktracker');
       this.props.onMazeAlgorithmDeSelect();
     }
 
@@ -168,6 +183,7 @@ class Board extends React.Component {
       });
       this.props.onClearWallsEnd();
     }
+    
   }
 
 
