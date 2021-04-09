@@ -5,7 +5,7 @@
 > Visualise the behaviour of selected algorithms.<br>
 
 ## DEPLOYMENT :
-<a href="https://svsannidhay.github.io/Line_Encoder/" target = "_blank" >**Path Finding Visualiser**</a>
+<a href="https://path-finding-visualiser.web.app/" target = "_blank" >**Path Finding Visualiser**</a>
 
 ## Instruction 
 * **A soruce can move only up or down or left or right.**
