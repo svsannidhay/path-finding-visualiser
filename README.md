@@ -22,8 +22,34 @@
 
 ### Finding Shortest path between Souce and Destination in a Maze : 
 * Select Reverse backtracker from the mazes dropdown, Wait for the maze to build up then go to algorithms dropdown and select Dijkstra then press visualise, this visualisation will show you the shortest path between source and destination in a maze.
+* 
+![alt text](https://github.com/svsannidhay/path-finding-visualiser/blob/master/Images/sp%20Dijkstra%20in%20a%20maze.png)
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+### Recursive Backtracker (Maze generation) : 
+![alt text](https://github.com/svsannidhay/path-finding-visualiser/blob/master/Images/backtracker.png)
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+### Dijkstra :
+![alt text](https://github.com/svsannidhay/path-finding-visualiser/blob/master/Images/Dijkstra.png)
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+### Dfs : 
+![alt text](https://github.com/svsannidhay/path-finding-visualiser/blob/master/Images/dfs.png)
 
 
