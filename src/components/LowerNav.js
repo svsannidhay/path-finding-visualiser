@@ -34,12 +34,14 @@ class LowerNav extends React.Component{
     return (
       <div className = "lowerNav">
         <div className = "lowerNav__logo">
-          <img src= {logo} alt="logo"/>
-          <div className ="lowerNav__text">
-            <h3 className ="lowerNav__heading">
-              <span className="lowerNav__heading--main">Path Finding</span>
-              <span className="lowerNav__heading--sub">Visulaiser</span>
-            </h3>
+          <div className = "lowerNav__logo--container">
+            <img src= {logo} alt="logo"/>
+            <div className ="lowerNav__text">
+              <h3 className ="lowerNav__heading">
+                <span className="lowerNav__heading--main">Path Finding</span>
+                <span className="lowerNav__heading--sub">Visulaiser</span>
+              </h3>
+            </div>
           </div>
         </div>
         <div className = "lowerNav__item">

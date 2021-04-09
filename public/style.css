@@ -429,8 +429,7 @@ a:focus {
   margin-bottom: 2rem; }
   .lowerNav__logo {
     float: left;
-    display: inline-block;
-    margin-right: 2rem; }
+    display: inline-block; }
     .lowerNav__logo img {
       display: inline-block;
       padding: 1rem;
@@ -501,7 +500,8 @@ a:focus {
         right: -21px;
         display: inline-block;
         transform: scale(0.5);
-        background-color: #fff9b0; }
+        background-color: #fff9b0;
+        border-radius: 50%; }
     .lowerNav__item--text {
       padding-left: 4rem;
       display: inline-block;

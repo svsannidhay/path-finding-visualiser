@@ -67,7 +67,7 @@ const Footer = () => {
         </div>
         <div className = "row footer__copyright-box">
           <p className="footer__copyright">
-            Copyright &copy; 2021 Path finding visualiser All rights reserved |  <a href="/#" className ="footer__link">Terms of Service</a>  |  Designed and Developed by Sannidhay Vashal.
+            Copyright &copy; 2021 Path finding visualiser |  <a href="https://github.com/svsannidhay/path-finding-visualiser/blob/master/LICENSE" target ="_blank" rel="noreferrer" className ="footer__link">Terms of Service</a>  |  Designed and Developed by Sannidhay Vashal.
           </p>
         </div>
       </div>

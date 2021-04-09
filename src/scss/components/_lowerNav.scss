@@ -6,7 +6,6 @@
   &__logo {
     float: left;
     display: inline-block;
-    margin-right: 2rem;
     img {
       display: inline-block;
       padding: 1rem;
@@ -112,7 +111,7 @@
         display: inline-block;
         transform: scale(.5);
         background-color:$color-lemon-primary;
-        // border-radius: 50%;
+        border-radius: 50%;
       }
     }
 
