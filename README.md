@@ -4,6 +4,9 @@
 > Run path finding algorithms, Form your own mazes by builiding walls,<br>
 > Visualise the behaviour of selected algorithms.<br>
 
+## DEPLOYMENT :
+<a href="https://svsannidhay.github.io/Line_Encoder/" target = "_blank" >**Path Finding Visualiser**</a>
+
 ## Instruction 
 * **A soruce can move only up or down or left or right.**
 * **StartNode and DestinationNode :** Already present on board by default, both of which are draggable so that you can place them anywhere on the board.
