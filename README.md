@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Path finding visualiser 
+## Overview
+> A Visualisation web app with a board on which you can select mazes,<br> 
+> Run path finding algorithms, Form your own mazes by builiding walls,<br>
+> Visualise the behaviour of selected algorithms.<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Instruction 
+* **A soruce can move only up or down or left or right.**
+* **StartNode and DestinationNode :** Already present on board by default, both of which are draggable so that you can place them anywhere on the board.
+* **Building walls :** 
+    1. You can click on any empty cell and it will toggle between wall and open cell.
+    2. You can drag the cursor around the board and all the cells covered will be turned into walls.
+    3. You can clear up a single wall by clicking on the cell or you can clear all the walls by pressing clearWalls button on the navigation.
+* **Choosing a maze :** So far only two maze algorithms are added.
+    1. **Recurisve Backtracker :** Its a randomised dfs and backtracking based algorihtm, All you need to do it just click on one of them and it will start the visualisation.
+    2. **Reverse Recursive Backtracker :** Its same as previous one just all the walls are opened now and all the open cells are changed to walls.
+* **Algorithms :** So far only two Path finding algorithms are added.
+    1. **Dijkstra :** A greedy bfs based algorithm, All you need to do is select it and press visualise, it will give you the shortest path between source and destination.
+    2. **Depth First Search :** :All you need to do is select it and press visualise, it will give you any valid path between source and destination.
+* **Clearboard :** Clears Everything on the board, you must clear the board after running each of the visualisation.
 
-## Available Scripts
 
-In the project directory, you can run:
+### Finding Shortest path between Souce and Destination in a Maze : 
+* Select Reverse backtracker from the mazes dropdown, Wait for the maze to build up then go to algorithms dropdown and select Dijkstra then press visualise, this visualisation will show you the shortest path between source and destination in a maze.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
