@@ -52,7 +52,7 @@ class App extends React.Component {
         isVisualizationStarted: true
       });
     } else {
-      alert("Abe algorithm toh select kr");
+      alert("Please select one of the path finding algorithms");
     }
   }
   onVisualizationEnd = () => {
