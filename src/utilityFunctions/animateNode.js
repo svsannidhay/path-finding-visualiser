@@ -38,7 +38,7 @@ export const animateWallNodesRemoval = (visited) => {
   return new Promise (
     (resolve,reject) => {
       let count = 0;
-      for (let i = 0;i < 10; i++) {
+      for (let i = 0;i < 5; i++) {
         let interval = setInterval( function(){
           if(count<visited.length) {
               toggleClassWallNode(visited[count][0],visited[count][1],'remove');
@@ -48,7 +48,7 @@ export const animateWallNodesRemoval = (visited) => {
             clearInterval(interval);
             resolve();
           }
-        },30);
+        },20);
       }
     }
   );
@@ -60,7 +60,7 @@ export const animateWallNodes = async (visited,startNode,destNode,clearWalls) =>
   return new Promise (
     (resolve,reject) => {
       let count = 0;
-      for (let i = 0;i < 3; i++) {
+      for (let i = 0;i < 5; i++) {
         let interval = setInterval( function(){
           if(count<visited.length) {
             if(visited[count][0] === gridStartNode[0] && visited[count][1] === gridStartNode[1]) {
@@ -76,7 +76,7 @@ export const animateWallNodes = async (visited,startNode,destNode,clearWalls) =>
             clearInterval(interval);
             resolve();
           }
-        },50);
+        },30);
       }
     }
   );
@@ -109,7 +109,7 @@ export const animateVisitedNodes = (visited,startNode,destNode) => {
             clearInterval(interval);
             resolve();
           }
-        },200);
+        },20);
       }
     }
   );
@@ -148,8 +148,8 @@ export const animatePathNodes = (path,startNode,destNode) => {
             clearInterval(interval);
             resolve();
           }
-        },30); 
-      },1700);
+        },20); 
+      },1200);
       
     }  
   );
