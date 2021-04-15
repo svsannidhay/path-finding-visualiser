@@ -99,4 +99,4 @@ class LowerNav extends React.Component{
   }
 }
 
-export default LowerNav;
+export default React.memo(LowerNav);
