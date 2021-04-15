@@ -1,7 +1,7 @@
 # Path finding visualiser 
 ## Overview
 > A Visualisation web app with a board on which you can select mazes,<br> 
-> Run path finding algorithms, Form your own mazes by builiding walls,<br>
+> Run path finding algorithms, Form your own mazes by building walls,<br>
 > Visualise the behaviour of selected algorithms.<br>
 
 ## DEPLOYMENT :
